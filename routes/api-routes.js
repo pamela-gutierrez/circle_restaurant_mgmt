@@ -36,20 +36,57 @@ module.exports = function(app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function(req, res) {
-        
-    })
+        db.Item.update(req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbItem){
+                res.json(dbItem)
+            });
+    });
 
     // Item(Admin):DELETE, delete a menu item
-
+    app.delete("/api/admin/menu/:id", function(req, res) {
+        db.Item.destroy({
+            where: {
+                id: req.params.id 
+            }
+        }).then(function(dbItem){
+            res.json(dbItem)
+        });
+    })
 
     // Item(User):GET, return all menu items
-
+    app.get("/api/item", function (req, res){
+        db.Item.findAll({}).then(function(dbItem){
+            res.json(dbItem);
+        });
+    });
 
     // Item(User):POST, return 1 menu item
-
+    app.get("/api/item/:id", function (req, res){
+        db.Item.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbItem){
+            res.json(dbItem)
+        });
+    });
 
     // Orders(User):POST, post item to order
-
+    app.post("/api/orders", function(req, res) {
+        db.Item.create({
+            seating_id: req.body.seating_id,
+            item_id: req.body.item_id,
+            item_quantity: req.body.item_quantity,
+            complete: req.body.complete,
+            submitted: req.body.submitted
+        }).then(function(dbItem){
+            res.json(dbItem)
+        });
+    });
 
     // Orders(User):PUT, update item in order
 
