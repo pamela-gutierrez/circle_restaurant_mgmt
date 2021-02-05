@@ -55,7 +55,7 @@ module.exports = function(app) {
         }).then(function(dbItem){
             res.json(dbItem)
         });
-    })
+    });
 
     // Item(User):GET, return all menu items
     app.get("/api/item", function (req, res){
@@ -89,14 +89,45 @@ module.exports = function(app) {
     });
 
     // Orders(User):PUT, update item in order
-
+    app.put("/api/orders/:id", function(req, res) {
+        db.Item.update(req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbItem){
+                res.json(dbItem)
+            });
+    });
 
     // Orders(User):DELETE, delete item in order
-
+    app.delete("/api/orders/:id", function(req, res) {
+        db.Item.destroy({
+            where: {
+                id: req.params.id 
+            }
+        }).then(function(dbItem){
+            res.json(dbItem)
+        });
+    });
 
     // Orders(Admin):GET, return all orders
-
+    app.get("/admin/orders", function (req, res){
+        db.Item.findAll({}).then(function(dbItem){
+            res.json(dbItem);
+        });
+    });
 
     // Orders(Admin):PUT, update orders to "complete"
+    app.put("/admin/orders/:id", function(req, res) {
+        db.Item.update(req.body,
+            {
+                where: {
+                    complete: req.params.complete
+                }
+            }).then(function(dbItem){
+                res.json(dbItem)
+            });
+    });
 }
 
