@@ -36,8 +36,12 @@ module.exports = function(app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function(req, res) {
-        db.Item.update(req.body,
-            {
+        db.Item.update({
+            name: req.body.name,
+            category: req.body.category,
+            cost: req.body.cost,
+            description: req.body.description
+        }, {
                 where: {
                     id: req.body.id
                 }
@@ -90,8 +94,13 @@ module.exports = function(app) {
 
     // Orders(User):PUT, update item in order
     app.put("/api/orders/:id", function(req, res) {
-        db.Item.update(req.body,
-            {
+        db.Item.update({
+            seating_id: req.body.seating_id,
+            item_id: req.body.item_id,
+            item_quantity: req.body.item_quantity,
+            complete: req.body.complete,
+            submitted: req.body.submitted
+        }, {
                 where: {
                     id: req.body.id
                 }
@@ -129,5 +138,5 @@ module.exports = function(app) {
                 res.json(dbItem)
             });
     });
-}
+};
 
