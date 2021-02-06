@@ -6,13 +6,21 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 	<!-- Foundation CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
 		integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+		integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
 
-	<!-- CSS and JS -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Javascript -->
 	<script src="js/script.js"></script>
+
 	<title>Welcome to Circle, Not Square</title>
 </head>
 
@@ -34,45 +42,64 @@
 	<div class="callout">
 		<h1>Welcome to Bob's Burgers menu.</h1>
 		<p>Home of the Bob's Burger, may I take your order.</p>
-		<!-- <a href="#">It's dangerous to go alone, take this.</a> -->
 	</div>
 
-	<ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion" role="tablist" data-tabs="2m5cy2-tabs" data-accordian="">
-		<li class="tabs-title" role="presentation" data-accordion-item>
-			<a href="#" class="accordion-title" role="tab" id="menuAppetizers">Appetizers</a>
-			<!-- <div class="accordion-content" data-tab-content>
-				Apps go here
-			</div> -->
-		</li>
-		<li class="tabs-title" role="presentation" data-accordion-item>
-			<a href="#" class="accordion-title" role="tab" id="menuBurgers">Burgers</a>
-			<!-- <div class="accordion-content" data-tab-content>
-				Burgers! Burgers! Burgers! Burgers! Burgers! Burgers! 
-			</div> -->
-		</li>
-		<li class="tabs-title" role="presentation" data-accordion-item>
-			<a href="#" class="accordion-title" role="tab" id="menuSalads">Salads</a>
-			<!-- <div class="accordion-content" data-tab-content>
-				Ew Salads
-			</div> -->
-		</li>
-		<li class="tabs-title" role="presentation" data-accordion-item>
-			<a href="#" class="accordion-title" role="tab" id="menuSoftServe">Soft-Serve</a>
-			<!-- <div class="accordion-content" data-tab-content>
-				Would you like some soft-serve?
-			</div> -->
-		</li>
-		<li class="tabs-title" role="presentation" data-accordion-item>
-			<a href="#" class="accordion-title" role="tab" id="menuDrinks">Drinks</a>
-			<!-- <div class="accordion-content" data-tab-content>
-				Drinks go here
-			</div> -->
-		</li>
-	</ul>
+	<div class="row">
+		<div class="columns">
 
+			<ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" role="tablist"
+				data-tabs="2m5cy2-tabs">
+				<li class="tabs-title is-active" role="presentation" data-accordion-item>
+					<a href="#menuAppetizers" class="accordion-title" role="tab">Appetizers</a>
+				</li>
+				<li class="tabs-title" role="presentation" data-accordion-item>
+					<a href="#menuBurgers" class="accordion-title" role="tab">Burgers</a>
+				</li>
+				<li class="tabs-title" role="presentation" data-accordion-item>
+					<a href="#menuSalads" class="accordion-title" role="tab">Salads</a>
+				</li>
+				<li class="tabs-title" role="presentation" data-accordion-item>
+					<a href="#menuSoftServe" class="accordion-title" role="tab">Soft-Serve</a>
+				</li>
+				<li class="tabs-title" role="presentation" data-accordion-item>
+					<a href="#menuDrinks" class="accordion-title" role="tab">Drinks</a>
+				</li>
+			</ul>
 
+			<div class="tabs-content" data-tabs-content="example-tabs">
+				<div class="tabs-panel" id="menuAppetizers">
+					<p>one</p>
+					<p>Apps go here</p>
+				</div>
+				<div class="tabs-panel" id="menuBurgers">
+					<p>Burgers! Burgers! Burgers! Burgers! Burgers! Burgers! </p>
+					<img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-7.jpg">
+				</div>
+				<div class="tabs-panel" id="menuSalads">
+					<p>three</p>
+					<p>Ew Salads</p>
+				</div>
+				<div class="tabs-panel" id="menuSoftServe">
+					<p>four</p>
+					<img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-2.jpg">
+				</div>
+				<div class="tabs-panel" id="menuDrinks">
+					<p>five</p>
+					<p>Would you like some Soft Serve?</p>
+				</div>
+				<div class="tabs-panel" id="panel6">
+					<p>Drinks go here</p>
+					<img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-8.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
 
-
+	<script>
+		$(document).ready(function () {
+			$(document).foundation();
+		})
+	</script>
 </body>
 
 </html>
