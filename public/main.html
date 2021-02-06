@@ -5,15 +5,74 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Foundation CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
 		integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+	<!-- CSS and JS -->
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/script.js"></script>
 	<title>Welcome to Circle, Not Square</title>
 </head>
 
 <body>
-	This is the main page
+	<div class="top-bar">
+		<div class="top-bar-left">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li class="menu-text">Circle</li>
+				<li class="menu-text">The well-rounded restaurant management system!</li>
+			</ul>
+		</div>
+		<div class="top-bar-right">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li><button type="button" class="button">Login</button></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="callout">
+		<h1>Welcome to Bob's Burgers menu.</h1>
+		<p>Home of the Bob's Burger, may I take your order.</p>
+		<!-- <a href="#">It's dangerous to go alone, take this.</a> -->
+	</div>
+
+	<ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion" role="tablist" data-tabs="2m5cy2-tabs" data-accordian="">
+		<li class="tabs-title" role="presentation" data-accordion-item>
+			<a href="#" class="accordion-title" role="tab" id="menuAppetizers">Appetizers</a>
+			<!-- <div class="accordion-content" data-tab-content>
+				Apps go here
+			</div> -->
+		</li>
+		<li class="tabs-title" role="presentation" data-accordion-item>
+			<a href="#" class="accordion-title" role="tab" id="menuBurgers">Burgers</a>
+			<!-- <div class="accordion-content" data-tab-content>
+				Burgers! Burgers! Burgers! Burgers! Burgers! Burgers! 
+			</div> -->
+		</li>
+		<li class="tabs-title" role="presentation" data-accordion-item>
+			<a href="#" class="accordion-title" role="tab" id="menuSalads">Salads</a>
+			<!-- <div class="accordion-content" data-tab-content>
+				Ew Salads
+			</div> -->
+		</li>
+		<li class="tabs-title" role="presentation" data-accordion-item>
+			<a href="#" class="accordion-title" role="tab" id="menuSoftServe">Soft-Serve</a>
+			<!-- <div class="accordion-content" data-tab-content>
+				Would you like some soft-serve?
+			</div> -->
+		</li>
+		<li class="tabs-title" role="presentation" data-accordion-item>
+			<a href="#" class="accordion-title" role="tab" id="menuDrinks">Drinks</a>
+			<!-- <div class="accordion-content" data-tab-content>
+				Drinks go here
+			</div> -->
+		</li>
+	</ul>
+
+
+
+
 </body>
 
 </html>
