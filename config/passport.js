@@ -9,13 +9,13 @@ passport.use(new LocalStrategy(
       where: {
         username: username
       }
-    }).then(function(User) {
-      if (!User) {
+    }).then(function(user) {
+      if (!user) {
         return done(null, false, {
           message: "Not valid username"
         });
       }
-      else if (!User.validPassword(password)) {
+      else if (!user.validPassword(password)) {
         return done(null, false, {
           message: "Incorrect password."
         });
