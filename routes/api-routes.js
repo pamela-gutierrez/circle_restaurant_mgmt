@@ -1,9 +1,14 @@
 // requiring models
 var db = require("../models");
+var passport = require("..config/passport.js");
 
 // Routes
 module.exports = function(app) {
 
+    app.post("/api/admin", passport.authenticate("local"), function(req, res) {
+        res.json(req.User);
+      });
+    
     // Item(Admin):GET, return all menu items
     app.get("/api/admin/item", function (req, res){
         db.Item.findAll({}).then(function(dbItem){
