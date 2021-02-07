@@ -60,11 +60,18 @@ $(document).ready(function () {
 
     viewTableOrders.on("click", function (event) {
         event.preventDefault();
-        $.get("/api/orders").then(function (data) {
-            viewCustOrders.text(data.???????)
+        $.get("/api/admin/item").then(function (data) {
+            console.log(data);
         })
         // getCustOrders
     })
+
+    // OR
+
+
+
+
+
 
     // ---------------------------------------------------------------------
     $(".create-Item").on("click", function (event) {
@@ -82,21 +89,21 @@ $(document).ready(function () {
     // ----------------------------------------------------------------------
 
     // EDIT MENU BUTTON.
-    $(".editMenu").on("click", function (event) {
-        event.preventDefault();
-        var id = $(this).data("id");
-        var editedMenu = $(this).data("")
+    // $(".editMenu").on("click", function (event) {
+    //     event.preventDefault();
+    //     var id = $(this).data("id");
+    //     var editedMenu = $(this).data("")
 
 
-        function editMenu(menuItem) {
+    //     function editMenu(menuItem) {
 
-        }
+    //     }
 
-        $.ajax("/api/admin" + id, {
-            type: "PUT",
-            url: 
-        }
-    })
+    //     $.ajax("/api/admin" + id, {
+    //         type: "PUT",
+    //         url: 
+    //     }
+    // })
 
     // ------------------------------------------------------------------------
 
@@ -125,5 +132,4 @@ $(document).ready(function () {
             }
         );
     })
-    )}
-)}
+})
