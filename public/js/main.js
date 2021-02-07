@@ -29,7 +29,5 @@ $(".delete-item").on("click", function (event) {
 // SUBMIT ORDER
 
 $(".sumbitOrder").on("click", function (event) {
-    var orderData = {
 
-    }
 })

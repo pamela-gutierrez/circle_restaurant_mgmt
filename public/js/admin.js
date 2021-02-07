@@ -8,6 +8,11 @@
 // $(".loginSubmit").on("click", function (event) {
 
 $(document).ready(function () {
+    // itemContainer holds all of the orders
+    // activeOrderContainer  holds all of the orders in progress
+    var itemContainer = $(".menuItem-container");
+    var activeOrders = $(".activeOrders-container");
+    var orders;
 
     // ----------------------------------------------------------------------
     // LOGIN FUNCTION 
@@ -74,16 +79,19 @@ $(document).ready(function () {
 
 
     // ---------------------------------------------------------------------
-    $(".create-Item").on("click", function (event) {
+    var addItem = $(".create-Item")
+    addItem.on("click", function (event) {
         event.preventDefault();
-
-        // var newItem = {
-        //     name:
-        //     category:
-        //     description:
-        //     cost:
-        // }
+        $.post("/api/admin/item/:id", function (data) {
+            console.log(data);
+        }
     })
+
+
+
+
+
+
 
 
     // ----------------------------------------------------------------------
@@ -124,12 +132,15 @@ $(document).ready(function () {
     // DELETE ITEMS FROM ORDER
     $(".delete-item").on("click", function (event) {
         var id = $(this).data("id");
+
         $.ajax("/api/admin/menu/" + id, {
-            type: "DELETE"
-        }).then(
-            function () {
-                console.log("deleted order", id);
-            }
-        );
+            method: "DELETE",
+            url: "/api/admin/menu/" + id
+        })
+            .then(
+                function () {
+                    console.log("deleted order", id);
+                }
+            );
     })
 })
