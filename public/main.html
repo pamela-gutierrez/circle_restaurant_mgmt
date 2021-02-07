@@ -36,7 +36,7 @@
 		</div>
 		<div class="top-bar-right">
 			<ul class="dropdown menu" data-dropdown-menu>
-				<li><button type="button" class="button secondary">Admin Login</button></li>
+				<li><button type="button" class="button secondary" data-open="modalLogin">Admin Login</button></li>
 				<li><button type="button" class="button" data-open="modalCart">View Cart</button></li>
 			</ul>
 		</div>
@@ -51,23 +51,25 @@
 		<div class="columns">
 
 			<!-- Tab menu -->
-			<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
-				<li class="tabs-title is-active" role="presentation">
-					<a href="#menuAppetizers" role="tab">Appetizers</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuBurgers" role="tab">Burgers</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuSalads" role="tab">Salads</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuSoftServe" role="tab">Soft-Serve</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuDrinks" role="tab">Drinks</a>
-				</li>
-			</ul>
+			<div class="flex-container">
+				<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
+					<li class="tabs-title is-active" role="presentation">
+						<a href="#menuAppetizers" role="tab">Appetizers</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuBurgers" role="tab">Burgers</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuSalads" role="tab">Salads</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuSoftServe" role="tab">Soft-Serve</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuDrinks" role="tab">Drinks</a>
+					</li>
+				</ul>
+			</div>
 
 			<div class="tabs-content" data-tabs-content="example-tabs">
 
@@ -290,7 +292,7 @@
 				</div>
 
 				<!-- Drinks Menu -->
-				<div class="tabs-panel" id="menuDrinks">
+				<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
 					<div class="flex-container ">
 
 						<div class="card" style="width: 300px;">
@@ -344,6 +346,26 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Login Modal -->
+	<div class="reveal" id="modalLogin" data-reveal>
+		<h1>Login page.</h1>
+		<p class="lead">You have UNLIMITED POWAAAAAA!!!!.</p>
+		<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<!-- Cart Modal -->
+	<div class="reveal" id="modalCart" data-reveal>
+		<h1>Awesome. I Have It.</h1>
+		<p class="lead">Your couch. It is mine.</p>
+		<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
 	</div>
 
 	<script>
