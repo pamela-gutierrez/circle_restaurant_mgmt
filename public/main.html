@@ -36,7 +36,8 @@
 		</div>
 		<div class="top-bar-right">
 			<ul class="dropdown menu" data-dropdown-menu>
-				<li><button type="button" class="button">Login</button></li>
+				<li><button type="button" class="button secondary" data-open="modalLogin">Admin Login</button></li>
+				<li><button type="button" class="button" data-open="modalCart">View Cart</button></li>
 			</ul>
 		</div>
 	</div>
@@ -50,137 +51,321 @@
 		<div class="columns">
 
 			<!-- Tab menu -->
-			<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs">
-				<li class="tabs-title is-active" role="presentation">
-					<a href="#menuAppetizers" role="tab">Appetizers</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuBurgers" role="tab">Burgers</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuSalads" role="tab">Salads</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuSoftServe" role="tab">Soft-Serve</a>
-				</li>
-				<li class="tabs-title" role="presentation">
-					<a href="#menuDrinks" role="tab">Drinks</a>
-				</li>
-			</ul>
+			<div class="flex-container">
+				<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
+					<li class="tabs-title is-active" role="presentation">
+						<a href="#menuAppetizers" role="tab">Appetizers</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuBurgers" role="tab">Burgers</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuSalads" role="tab">Salads</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuSoftServe" role="tab">Soft-Serve</a>
+					</li>
+					<li class="tabs-title" role="presentation">
+						<a href="#menuDrinks" role="tab">Drinks</a>
+					</li>
+				</ul>
+			</div>
 
 			<div class="tabs-content" data-tabs-content="example-tabs">
-				<div class="tabs-panel is-active" id="menuAppetizers">
 
-					<div class="cell cell-card" style="width: 300px;">
-						<div class="header cell-header ">
-							<h4>House Fries</h4>
-							<p>oh yum a tasty treat .Get it while its hot</p>
-							<div class="cell shrink footer cell-footer">
-								<p>Price: $$
-									<button type="button" class="button align-right">Add Item</button>
-								</p>
-							</div>
-						</div>
-					</div>
+				<!-- Appetizers Menu -->
+				<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
 
 					<div class="flex-container ">
 
-						<div class="cell cell-card" style="width: 300px;">
+						<div class="card" style="width: 300px;">
 							<div class="header cell-header card-section">
 								<h4>House Fries</h4>
-								<p>oh yum a tasty treat .Get it while its hot</p>
-								<div class="cell shrink footer cell-footer">
-									<p class="align-bottom">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
+								<p>oh yum a tasty treat. Get it while its hot! </p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="1">Add Item</button>
 									</p>
 								</div>
 							</div>
 						</div>
 
-						<div class="cell cell-card" style="width: 300px;">
-							<div class="card-section">
-								<h4>Buffalo wings</h4>
-								<p>Tasty treat.</p>
-								<div clas="flex-container">
+						<div class=" card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Cheesey Fries</h4>
+								<p>More cheese! I said more cheeeeeeeeeeese!</p>
+								<div class="card-divider flex-container footer">
 									<p class="align-left">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
+										<button type="button" class="button align-right" data-item-id="2">Add Item</button>
 									</p>
 								</div>
 							</div>
 						</div>
 
 						<div class="card" style="width: 300px;">
-							<div class="card-section">
-								<h4>App 1</h4>
-								<p>Tasty treat.</p>
-								<div clas="flex-container">
+							<div class="header cell-header card-section">
+								<h4>Buffalo Wings</h4>
+								<p>Buffalos don't have wings</p>
+								<div class="card-divider flex-container footer">
 									<p class="align-left">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
+										<button type="button" class="button align-right" data-item-id="3">Add Item</button>
 									</p>
 								</div>
 							</div>
 						</div>
 
 						<div class="card" style="width: 300px;">
-							<div class="card-section">
-								<h4>App 1</h4>
-								<p>Tasty treat.</p>
-								<div clas="flex-container">
+							<div class="header cell-header card-section">
+								<h4>Chicken Nuggies</h4>
+								<p>Is it chicken or something else...</p>
+								<div class="card-divider flex-container footer">
 									<p class="align-left">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
+										<button type="button" class="button align-right" data-item-id="4">Add Item</button>
 									</p>
 								</div>
 							</div>
 						</div>
-
-						<div class="card" style="width: 300px;">
-							<div class="card-section">
-								<h4>App 1</h4>
-								<p>Tasty treat.</p>
-								<div clas="flex-container">
-									<p class="align-left">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="card" style="width: 300px;">
-							<div class="card-section">
-								<h4>App 1</h4>
-								<p>Tasty treat.</p>
-								<div clas="flex-container">
-									<p class="align-left">Price: $$
-										<button type="button" class="button align-right">Add Item</button>
-									</p>
-								</div>
-							</div>
-						</div>
-
 					</div>
-
 				</div>
 
+				<!-- Burgers Menu -->
+				<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
 
-				<div class="tabs-panel" id="menuBurgers">
-					<p>Burgers! Burgers! Burgers! Burgers! Burgers! Burgers! </p>
+					<div class="flex-container ">
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Bruschetta Bout It Burger</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="1">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>If Looks Could Kale Burger</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="2">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Summer Thyme Burger</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="3">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Hummus a Tune Burger</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="4">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="tabs-panel" id="menuSalads">
-					<p>three</p>
-					<p>Ew Salads</p>
+
+				<!-- Salads Menu -->
+				<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
+					<div class="flex-container ">
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Peas and Thank You Salad</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="1">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Sweet Home Avocado Salad</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="2">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>The Garden of Eden Salad</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="3">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Hummus a Tune Burger</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="4">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="tabs-panel" id="menuSoftServe">
-					<p>four</p>
+
+				<!-- Ice Cream Menu -->
+				<div class="tabs-panel" data-menu-items="icecream" id="menuSoftServe">
+					<div class="flex-container ">
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Strawberry</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="1">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Pistachio</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="2">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Chocolate</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="3">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Vanilla</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="4">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="tabs-panel" id="menuDrinks">
-					<p>five</p>
-					<p>Would you like some Soft Serve?</p>
-				</div>
-				<div class="tabs-panel" id="panel6">
-					<p>Drinks go here</p>
+
+				<!-- Drinks Menu -->
+				<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
+					<div class="flex-container ">
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Coca-Cola</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="1">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Milkshake</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="2">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Water</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="3">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card" style="width: 300px;">
+							<div class="header cell-header card-section">
+								<h4>Orange Soda</h4>
+								<p></p>
+								<div class="card-divider flex-container footer">
+									<p class="align-left">Price: $$
+										<button type="button" class="button align-right" data-item-id="4">Add Item</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Login Modal -->
+	<div class="reveal" id="modalLogin" data-reveal>
+		<h1>Login page.</h1>
+		<p class="lead">You have UNLIMITED POWAAAAAA!!!!.</p>
+		<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<!-- Cart Modal -->
+	<div class="reveal" id="modalCart" data-reveal>
+		<h1>Awesome. I Have It.</h1>
+		<p class="lead">Your couch. It is mine.</p>
+		<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
 	</div>
 
 	<script>

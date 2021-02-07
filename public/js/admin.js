@@ -39,7 +39,7 @@ $(document).ready(function () {
             password: password
         })
             .then(function () {
-                window.location.replact("/admin");
+                window.location.replace("/admin");
             })
             .catch(function (err) {
                 console.log(err);
@@ -54,7 +54,8 @@ $(document).ready(function () {
     // --------------------------------------------------------------------
 
 
-    // VIEW ALL TABLE ORDERS
+    // VIEW ALL MENU ITEMS -- fix this.
+    // This is view 
     var viewTableOrders = $("viewTableOrders");
 
     viewTableOrders.on("click", function (event) {
@@ -63,6 +64,18 @@ $(document).ready(function () {
             viewCustOrders.text(data.???????)
         })
         // getCustOrders
+    })
+
+    // ---------------------------------------------------------------------
+    $(".create-Item").on("click", function (event) {
+        event.preventDefault();
+
+        // var newItem = {
+        //     name:
+        //     category:
+        //     description:
+        //     cost:
+        // }
     })
 
 
@@ -82,7 +95,7 @@ $(document).ready(function () {
         $.ajax("/api/admin" + id, {
             type: "PUT",
             url: 
-})
+        }
     })
 
     // ------------------------------------------------------------------------
@@ -92,6 +105,8 @@ $(document).ready(function () {
         var id = $(this).data("id");
         var newCompleted = $(this).data("newCompleted");
     })
+    // ------------------------------------------------------------------------
+
     // BUTTON THAT ALLOWS USER TO REVIEW ITEMS BEFORE SUBMITTING. I'll want to display all the orders. 
     $(".reviewOrders").on("click", function (event) {
         event.preventDefault();
@@ -109,5 +124,6 @@ $(document).ready(function () {
                 console.log("deleted order", id);
             }
         );
-    });
-});
+    })
+    )}
+)}
