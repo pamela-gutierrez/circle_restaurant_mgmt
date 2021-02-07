@@ -22,11 +22,10 @@ module.exports = function (sequelize, DataTypes) {
         });
         Orders.hasMany(models.Items, {
             foreignKey: {
-                allowNull: false
+                allowNull: false,
+                constraints: false
             }
         });
     };
     return Orders;
 }
-
-Orders.sync();

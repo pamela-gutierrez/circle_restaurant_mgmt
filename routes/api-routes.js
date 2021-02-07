@@ -1,6 +1,6 @@
 // requiring models
 var db = require("../models");
-var passport = require("..config/passport.js");
+var passport = require("../config/passport.js");
 
 // Routes
 module.exports = function(app) {
