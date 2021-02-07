@@ -1,4 +1,11 @@
 .cell-card {
-	border: 2px solid red;
 	padding-bottom: 0px;
+}
+
+.card-divider {
+	padding-bottom: 0px;
+}
+
+.card {
+	margin: 5px;
 }
