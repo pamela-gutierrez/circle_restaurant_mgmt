@@ -17,4 +17,6 @@ module.exports = function (sequelize, DataTypes) {
         });
     }
     return Seating;
-}
+};
+
+Seating.sync();
