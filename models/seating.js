@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         maxSeats: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             validate: {
                 notNull: true,
             }
@@ -18,5 +19,3 @@ module.exports = function (sequelize, DataTypes) {
     }
     return Seating;
 };
-
-Seating.sync();

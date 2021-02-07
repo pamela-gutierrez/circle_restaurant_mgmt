@@ -2,6 +2,7 @@ module.exports = function (sequelize, DataTypes) {
     var Items = sequelize.define("Items", {
         name: {
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 notNull: true,
                 is: /^[a-z]+$/i,
@@ -10,6 +11,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         category: {
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 notNull: true,
                 is: /^[a-z]+$/i,
@@ -33,11 +35,10 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Items.associate = function(models) {
-        Items.hasMany(models.Orders, {
+        Items.belongsTo(models.Orders, {
         });
     }
     
     return Items;
 };
 
-Items.sync();
