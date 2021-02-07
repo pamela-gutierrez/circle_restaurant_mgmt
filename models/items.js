@@ -38,4 +38,6 @@ module.exports = function (sequelize, DataTypes) {
     }
     
     return Items;
-}
+};
+
+Items.sync();
