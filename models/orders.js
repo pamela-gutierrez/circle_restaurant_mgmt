@@ -17,7 +17,8 @@ module.exports = function (sequelize, DataTypes) {
     Orders.associate = function(models) {
         Orders.belongsTo(models.Seating, {
             foreignKey: {
-                allowNull: false
+                allowNull: false,
+                constraints: false,
             }
         });
         Orders.hasMany(models.Items, {

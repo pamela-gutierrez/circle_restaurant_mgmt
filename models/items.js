@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Items.associate = function(models) {
-        Items.hasMany(models.Orders, {
+        Items.belongsTo(models.Orders, {
         });
     }
     
