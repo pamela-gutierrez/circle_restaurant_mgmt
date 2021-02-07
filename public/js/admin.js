@@ -8,6 +8,19 @@
 // $(".loginSubmit").on("click", function (event) {
 
 $(document).ready(function () {
+    // Gets an optional query string from our url (i.e. ?post_id=23)
+    var url = window.location.search;
+    var itemId;
+    var updating = false;
+
+    // If we have this section in our url, we pull out the item id from the url
+    // In localhost:8080/cms?post_id=1, postId is 1
+    if (url.indexOf("?item_id=") !== -1) {
+        postId = url.split("=")[1];
+        getMenuItemData(itemId);
+    }
+
+
     // itemContainer holds all of the orders
     // activeOrderContainer  holds all of the orders in progress
     var itemContainer = $(".menuItem-container");
@@ -50,16 +63,20 @@ $(document).ready(function () {
                 console.log(err);
             })
     }
-    // ONCE ON THE MEMBERS PAGE ADMINS SHOWS 
+
     $(".logout").on("click", function (event) {
         event.preventDefault();
     })
 
-
+    // ONCE ON THE MEMBERS PAGE ADMINS SHOWS 
     // --------------------------------------------------------------------
-
+    // come back to this, do edit menu first
 
     // VIEW ALL MENU ITEMS -- fix this.
+
+    function viewMenuItem() {
+
+    }
     // This is view 
     var viewTableOrders = $("viewTableOrders");
 
@@ -78,14 +95,47 @@ $(document).ready(function () {
 
 
 
-    // ---------------------------------------------------------------------
-    var addItem = $(".create-Item")
-    addItem.on("click", function (event) {
+    // --------------------------------ADD A NEW ITEM TO THE MENU---------------------------------
+
+    var newMenuItemForm = $("#nif");
+    // Do we need this? Or is the newMenuItem already the same thing?
+    var addItem = $(".add-Item");
+    var nameInput = $("#nameInput");
+    var categoryInput = $("#categoryInput");
+    var descriptionInput = $("#descriptionInput");
+    var costInput = $("#costInput");
+
+
+    $(newMenuItemForm).on("submit", function handleItemSumbit(event) {
         event.preventDefault();
-        $.post("/api/admin/item/:id", function (data) {
-            console.log(data);
+        // wont submit if form is empty or missing body or title
+        if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
+            return;
         }
-    })
+        var newMenuItem = {
+            name: nameInput.val().trim(),
+            category: categoryInput.val().trim(),
+            description: descriptionInput.val().trim(),
+            cost: costInput.val().trim()
+        };
+        console.log(newMenuItem)
+
+        if (updating) {
+            newMenuItem.id = itemId
+            updateMenuItem(newMenuItem);
+        }
+        else {
+            sumbitNewItem(newMenuItem);
+        }
+    });
+    // Submits a new menu Item and brings user to available menu items page upon completion
+    function submitMenuItem(menuItem) {
+        // does this one need an id already? I think Hudson's route might not need it either?
+        $.post("/api/admin/item/:id", menuItem, function () {
+            window.location.href = "/admin";
+        });
+    }
+    // ------------------------------------------------------------------------------------------
 
 
 
@@ -122,25 +172,42 @@ $(document).ready(function () {
     })
     // ------------------------------------------------------------------------
 
-    // BUTTON THAT ALLOWS USER TO REVIEW ITEMS BEFORE SUBMITTING. I'll want to display all the orders. 
-    $(".reviewOrders").on("click", function (event) {
-        event.preventDefault();
-    })
+
 
 
     // -------------------------------------------------------------------------
     // DELETE ITEMS FROM ORDER
-    $(".delete-item").on("click", function (event) {
-        var id = $(this).data("id");
-
-        $.ajax("/api/admin/menu/" + id, {
+    // $(".delete-item").on("click", function (event) {
+    //     var id = $(this).data("id");
+    function deleteMenuItem(id) {
+        $.ajax({
             method: "DELETE",
             url: "/api/admin/menu/" + id
         })
-            .then(
-                function () {
-                    console.log("deleted order", id);
-                }
-            );
-    })
+            .then(function () {
+                console.log("deleted menu item", id);
+            });
+    }
+    function handleMenuItemDelete() {
+        var currentMenuItem = $(this)
+            .parent()
+            .parent()
+            .data("menuItem");
+        window.location.href = "/"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })

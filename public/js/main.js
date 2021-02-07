@@ -31,3 +31,9 @@ $(".delete-item").on("click", function (event) {
 $(".sumbitOrder").on("click", function (event) {
 
 })
+
+
+// BUTTON THAT ALLOWS USER TO REVIEW ITEMS BEFORE SUBMITTING. I'll want to display all the orders. 
+$(".reviewOrders").on("click", function (event) {
+    event.preventDefault();
+})
