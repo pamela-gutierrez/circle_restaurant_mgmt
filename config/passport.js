@@ -10,6 +10,9 @@ passport.use(new LocalStrategy(
         username: username
       }
     }).then(function (user) {
+      // if(user.validPassword(password)) {
+      //   return done(null, user);
+      // }
       if (!user) {
         return done(null, false, {
           message: "Not valid username"
@@ -21,7 +24,8 @@ passport.use(new LocalStrategy(
         });
       }
       // If none of the above, return the user
-      return done(null, circle_db);
+      return done(null, user);
+
     });
   }
 ));
