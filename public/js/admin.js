@@ -6,8 +6,6 @@
 
 const items = require("../../models/items");
 
-// BUTTON TO SUBMIT LOGIN INFORMATION
-// $(".loginSubmit").on("click", function (event) {
 
 $(document).ready(function () {
     // itemContainer holds all of the orders
