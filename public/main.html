@@ -21,13 +21,14 @@
 	<meta class="foundation=mq">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/main.css">
 
 	<title>Circle, Not Square</title>
 </head>
 
 <body>
 
+	<!-- Navbar -->
 	<div class="top-bar">
 		<div class="top-bar-left">
 			<ul class="dropdown menu" data-dropdown-menu>
@@ -48,12 +49,9 @@
 		<p>Home of the Bob's Burger, may I take your order.</p>
 	</div>
 
-	<!-- <div class="row">
-		<div class="columns"> -->
-
 	<!-- Tab menu -->
 	<div class="flex-container">
-		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
+		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="menu-tabs">
 			<li class="tabs-title is-active" role="presentation">
 				<a href="#menuAppetizers" role="tab">Appetizers</a>
 			</li>
@@ -72,7 +70,7 @@
 		</ul>
 	</div>
 
-	<div class="tabs-content" data-tabs-content="example-tabs">
+	<div class="tabs-content" data-tabs-content="menu-tabs">
 
 		<!-- Appetizers Menu -->
 		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
@@ -346,8 +344,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- </div>
-	</div> -->
 
 	<!-- Login Modal -->
 	<div class="reveal" id="modalLogin" data-reveal>
@@ -357,50 +353,50 @@
 
 			<div class="row">
 				<div class="small-12 medium-6 large-3 columns">
-					<!-- <label>Username -->
 					<input type="text" id="username-input" placeholder="Username">
-					<!-- </label> -->
 				</div>
 				<div class="small-12 medium-6 large-9 columns">
-					<!-- <label>Passord -->
 					<input type="text" id="password-input" placeholder="Passord">
-					<!-- </label> -->
 				</div>
 			</div>
+
 			<div class="input-group-button">
 				<input type="submit" class="button large expanded" value="Submit">
 			</div>
 		</form>
+
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 
 	<!-- Cart Modal -->
-	<div class="reveal" id="modalCart" data-reveal>
-		<!-- <div class="off-canvas position-right" id="modalCart" data-off-canvas> -->
-		<h1>Your Order</h1>
+	<!-- <div class="reveal" id="modalCart" data-reveal> -->
+		<div class="off-canvas position-right" id="modalCart" data-off-canvas>
+		<h2>Your Order</h2>
 		<p class="lead">Buy it now! or don't, I'm not your boss</p>
 
-		<table class="stack">
+		<!-- <table class="stack"> -->
+		<table>
+
 			<thead>
 				<tr>
-					<th width="300">Item</th>
-					<th>Each</th>
-					<th>x Quantity</th>
+					<th>Item</th>
 					<th>Subtotal</th>
 				</tr>
 			</thead>
-			<tbody id="cartTable">
-				<!-- insert rows of order items here -->
+			<tbody id="orderCart">
 				<tr>
-					<th></th>
-					<th></th>
-					<th>Total: </th>
-					<th>$$.$$</th>
+					<td>Burger</td>
+					<td>20.00</td>
+				</tr>
+				<tr class="totalAmount">
+					<td>Total: </td>
+					<td>10.00</td>
 				</tr>
 			</tbody>
 		</table>
+
 		<div class="input-group-button">
 			<input type="submit" class="button large expanded" value="Place Order">
 		</div>

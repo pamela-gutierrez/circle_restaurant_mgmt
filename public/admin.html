@@ -27,6 +27,7 @@
 
 <body>
 
+	<!-- Navbar -->
 	<div class="top-bar">
 		<div class="top-bar-left">
 			<ul class="dropdown menu" data-dropdown-menu>
@@ -46,23 +47,9 @@
 		<h1>Welcome to Bob's Burgers menu.</h1>
 	</div>
 
-	<!-- Off Canvas -->
-	<!-- <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
-		<button class="close-button" aria-label="Close menu" type="button" data-close>
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul class="vertical menu">
-			<li><a href="#">Foundation</a></li>
-			<li><a href="#">Dot</a></li>
-			<li><a href="#">ZURB</a></li>
-			<li><a href="#">Com</a></li>
-			<li><a href="#">Slash</a></li>
-			<li><a href="#">Sites</a></li>
-		</ul>
-	</div> -->
-
+	<!-- Tab menu -->
 	<div class="flex-container">
-		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
+		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="menu-tabs">
 			<li class="tabs-title is-active" role="presentation">
 				<a href="#menuAppetizers" role="tab">Appetizers</a>
 			</li>
@@ -81,7 +68,7 @@
 		</ul>
 	</div>
 
-	<div class="tabs-content" data-tabs-content="example-tabs">
+	<div class="tabs-content" data-tabs-content="menu-tabs">
 
 		<!-- Appetizers Menu -->
 		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
@@ -378,26 +365,28 @@
 
 	<!-- Item Modal -->
 	<div class="reveal" id="editItemModal" data-reveal>
-		<h1>Item name:</h1>
-		<p class="lead">Description:</p>
-		<p class="lead">Cost:</p>
 
-		<!-- <div class="row">
-			<div class="small-12 medium-6 large-3 columns">
-				<input type="text" placeholder="Username">
+		<form id="editMenuItemModal">
+			<label>
+				<h2>Item name:</h2>
+				<input type="text" required id="modal-item-menu">
+			</label>
+			<label>Description:
+				<input type="text" required id="modal-item-desc">
+			</label>
+			<label>Item cost:
+				<input type="text" required id="modal-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
+			</label>
+
+			<div class="row flex-container">
+				<div class="input-group-button">
+					<button type="button" class="button large success" id="saveItem">Save</button>
+				</div>
+				<div class="input-group-button">
+					<button type="button" class="button large alert" id="deleteItem">Delete</button>
+				</div>
 			</div>
-			<div class="small-12 medium-6 large-9 columns">
-				<input type="text" placeholder="Passord">
-			</div>
-		</div> -->
-		<div class="row flex-container">
-			<div class="input-group-button">
-				<button type="button" class="button large success" id="saveItem">Save</button>
-			</div>
-			<div class="input-group-button">
-				<button type="button" class="button large alert" id="deleteItem">Delete</button>
-			</div>
-		</div>
+		</form>
 
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
