@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/michaelanthonyyy/circle_restaurant_mgmt#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "express-session": "^1.17.1",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.6"
   }
 }
