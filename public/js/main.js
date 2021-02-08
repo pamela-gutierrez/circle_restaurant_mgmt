@@ -1,4 +1,5 @@
 // from the main page we user should be able to:
+// login the admin
 // view the menu
 // add items to their order
 // remove items from their order
@@ -7,11 +8,20 @@
 
 $(document).ready(function () {
     // --------------------------ADMIN LOGIN--------------------------------
+    // Pointers to HTML tags/classes/ids
+    var menuItemContainer = $(".menuItem-container");
+    var activeOrders = $(".activeOrders-container");
 
-    var loginAdmin = $("form.login");
+    var loginAdmin = $("form.modalLogin");
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
 
+    $(document).on("click", "button.editOrder", handleEditOrder);
+    $(document).on("click", "button.deleteOrder", handleDeleteOrder);
+    $(document).on("submit", "button.submitOrder", handleSumbitOrder);
+
+
+    // ADMIN LOGIN
     loginAdmin.on("submit", function (event) {
         event.preventDefault();
         var userData = {
@@ -29,6 +39,7 @@ $(document).ready(function () {
         // passwordInput.val("");
     });
 
+    // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
         $.post("/api/admin", {
             username: username,
@@ -42,26 +53,26 @@ $(document).ready(function () {
             })
     }
 
-
-
     var orderId;
-    // sets a glad for whether or not we're updating a post to be false initially
+    // sets a flag for whether or not we're updating a post to be false initially
     var updating = false;
-
-    // Getting jQuery references to the itemId
-
-
 
     // UPDATE ORDER: gets the data from the order we are updating
     function getOrderData(id) {
-        $.post("/api/orders" + id, function (data) {
+        $.post("/api/orders/" + id, function (data) {
             if (data) {
                 nameInput.val(data.name);
                 updating = true;
             }
-        })
+        });
     }
 
+    function updateOrder(item) {
+        $.ajax({
+            method: "PUT",
+            url: "/api/admin/item/:id",
+        })
+    }
 
     // DELETE ITEM FROM ORDER
     $(".delete-item").on("click", function (event) {
@@ -78,9 +89,18 @@ $(document).ready(function () {
     $(".addItem").on("click", function (event) {
         event.preventDefault();
         // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
-
-
     })
+
+
+    function handleOrderItemDelete() {
+        var currentItem = $(this)
+            .parent()
+            .parent()
+            .data("")
+    }
+
+    // OrderCart
+    // needs name and cost
 
 })
 
