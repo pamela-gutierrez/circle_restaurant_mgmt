@@ -7,6 +7,7 @@ module.exports = function (app) {
     });
 
     app.get("/admin", isAuthenticated, function (req, res) {
+        console.log("Michael curses at code");
         res.sendFile(path.join(__dirname, "../public/admin.html"))
     });
 
@@ -20,7 +21,7 @@ module.exports = function (app) {
     });
 
     // Non-Admin trying to access admin.html are redirected to main.html
-    app.get("/admin", isAuthenticated, function (req, res) {
-        res.SendFile(path.join(__dirname, "../public/main.html"));
-    });
+    // app.get("/admin", isAuthenticated, function (req, res) {
+    //     res.SendFile(path.join(__dirname, "../public/main.html"));
+    // });
 }

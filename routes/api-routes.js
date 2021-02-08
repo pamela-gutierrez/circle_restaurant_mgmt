@@ -7,7 +7,7 @@ var passport = require("../config/passport.js");
 // Routes
 module.exports = function (app) {
 
-    app.post("/api/admin", passport.authenticate("local"), function (req, res) {
+    app.post("/api/main", passport.authenticate("local"), function (req, res) {
         res.redirect("/admin");
     });
 

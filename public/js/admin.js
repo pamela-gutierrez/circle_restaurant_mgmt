@@ -4,7 +4,7 @@
 // What do I want to happen when the person hits the login button?
 // I want to send the information to be verified as existing in our user database. If it does exist in our user database, (the credentials are valid) redirect them to the admin members page where
 
-const items = require("../../models/items");
+// const items = require("../../models/items");
 
 
 $(document).ready(function () {

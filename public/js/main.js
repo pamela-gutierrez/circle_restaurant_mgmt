@@ -41,9 +41,8 @@ $(document).ready(function () {
 
     // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
-        console.log("HERE");
 
-        $.post("/api/admin", {
+        $.post("/api/main", {
             username: username,
             password: password
         })
