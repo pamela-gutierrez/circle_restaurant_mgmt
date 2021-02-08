@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Seating.associate = function(models) {
-        Seating.hasMany(models.Orders, {
+        models.Seating.hasMany(models.Orders, {
         });
     }
     return Seating;

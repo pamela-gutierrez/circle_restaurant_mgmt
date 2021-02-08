@@ -15,17 +15,13 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Orders.associate = function(models) {
-        Orders.belongsTo(models.Seating, {
+        models.Orders.belongsTo(models.Seating, {
             foreignKey: {
                 allowNull: false,
                 constraints: false,
             }
         });
-        Orders.hasMany(models.Items, {
-            foreignKey: {
-                allowNull: false,
-                constraints: false
-            }
+        models.Orders.hasMany(models.ItemOrders, {
         });
     };
     return Orders;
