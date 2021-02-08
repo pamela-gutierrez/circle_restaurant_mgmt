@@ -26,14 +26,32 @@
 </head>
 
 <body>
-	<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
 
-		<!-- Close button -->
+	<div class="top-bar">
+		<div class="top-bar-left">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li class="menu-text">Powered by Circle</li>
+				<li class="menu-text">The well-rounded restaurant management system!</li>
+			</ul>
+		</div>
+		<div class="top-bar-right">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li><button type="button" class="button secondary">Logout</button></li>
+				<li><button type="button" class="button" data-open="modalCart">View Orders</button></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="callout">
+		<h1>Welcome to Bob's Burgers menu.</h1>
+		<!-- <p>Home of the Bob's Burger, may I take your order.</p> -->
+	</div>
+
+	<!-- Off Canvas -->
+	<!-- <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
 		<button class="close-button" aria-label="Close menu" type="button" data-close>
 			<span aria-hidden="true">&times;</span>
 		</button>
-
-		<!-- Menu -->
 		<ul class="vertical menu">
 			<li><a href="#">Foundation</a></li>
 			<li><a href="#">Dot</a></li>
@@ -42,19 +60,309 @@
 			<li><a href="#">Slash</a></li>
 			<li><a href="#">Sites</a></li>
 		</ul>
+	</div> -->
 
+	<div class="flex-container">
+		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="example-tabs">
+			<li class="tabs-title is-active" role="presentation">
+				<a href="#menuAppetizers" role="tab">Appetizers</a>
+			</li>
+			<li class="tabs-title" role="presentation">
+				<a href="#menuBurgers" role="tab">Burgers</a>
+			</li>
+			<li class="tabs-title" role="presentation">
+				<a href="#menuSalads" role="tab">Salads</a>
+			</li>
+			<li class="tabs-title" role="presentation">
+				<a href="#menuSoftServe" role="tab">Soft-Serve</a>
+			</li>
+			<li class="tabs-title" role="presentation">
+				<a href="#menuDrinks" role="tab">Drinks</a>
+			</li>
+		</ul>
 	</div>
 
-	<div class="off-canvas-content" data-off-canvas-content>
-		<!-- Your page content lives here -->
-	</div>
+	<div class="tabs-content" data-tabs-content="example-tabs">
 
+		<!-- Appetizers Menu -->
+		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
+
+			<div class="flex-container ">
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>House Fries</h4>
+						<p>oh yum a tasty treat. Get it while its hot! </p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="1">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class=" card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Cheesey Fries</h4>
+						<p>More cheese! I said more cheeeeeeeeeeese!</p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="2">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Buffalo Wings</h4>
+						<p>Buffalos don't have wings</p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="3">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Chicken Nuggies</h4>
+						<p>Is it chicken or something else...</p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="4">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Burgers Menu -->
+		<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
+
+			<div class="flex-container ">
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Bruschetta Bout It Burger</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="1">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>If Looks Could Kale Burger</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="2">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Summer Thyme Burger</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="3">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Hummus a Tune Burger</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="4">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Salads Menu -->
+		<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
+			<div class="flex-container ">
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Peas and Thank You Salad</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="1">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Sweet Home Avocado Salad</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="2">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>The Garden of Eden Salad</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="3">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Hummus a Tune Burger</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="4">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Ice Cream Menu -->
+		<div class="tabs-panel" data-menu-items="icecream" id="menuSoftServe">
+			<div class="flex-container ">
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Strawberry</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="1">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Pistachio</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="2">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Chocolate</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="3">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Vanilla</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="4">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Drinks Menu -->
+		<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
+			<div class="flex-container ">
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Coca-Cola</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="1">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Milkshake</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="2">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Water</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="3">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="width: 300px;">
+					<div class="header cell-header card-section">
+						<h4>Orange Soda</h4>
+						<p></p>
+						<div class="card-divider flex-container footer">
+							<p class="align-left">Price: $$
+								<button type="button" class="button align-right" data-item-id="4">Edit Item</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		$(document).ready(function () {
 			$(document).foundation();
 		})
 	</script>
+
 </body>
 
 </html>
