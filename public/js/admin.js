@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     // Item Id for the individual menu items 
     var menuItem;
-    // Submitted orders
+    // Submitted orders, are we going to allow the admin to edit orders?
     var orders;
 
     // Gets an optional query string from our url (i.e. ?post_id=23)
@@ -40,26 +40,6 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
-    // -----------------VIEW ALL MENU ITEMS------------------------------
-    // Will the menu be automatically displayed when the user logs in? Or will it be a seperate button?
-    // Potential extra feature? Do we want to allow the user to search by category of food item?
-    // function viewFullMenu(category) {
-    //     var categoryString = category || "",
-    //     if (categoryString) {
-    //         categoryString = "/category/" + categoryString;
-    //     }
-    //     // var viewFullMenu = $("viewFullMenu");
-    //     // viewFullMenu.on("click", function (event) {
-    //     //     event.preventDefault();
-    //     $.get("/api/admin/item", + categoryString, (function (data) {
-    //         console.log("Items", data);
-    //         items = data;
-    //         if (!items || !items.length) {
-    //             displayEmpty();
-    //         } else {
-    //             initializeMenu();
-    //         }
-    //     })
 
     // ----------------ADD A NEW ITEM TO THE MENU----------------------------
 
@@ -92,6 +72,8 @@ $(document).ready(function () {
             submitNewItem(newMenuItem);
         }
     });
+
+    // --------------SUBMIT MENU ITEM------------------------------
     // Submits a new menu Item and brings user to available menu items page upon completion
     function submitMenuItem(menuItem) {
         // does this one need an id already? I think Hudson's route might not need it either?
@@ -112,19 +94,6 @@ $(document).ready(function () {
     }
     viewFullMenu();
 
-    // ----------------EDIT MENU ITEMS--------------------------
-
-
-    // window.location.href = "/admin?item_id=" + currentMenuItem.id;
-
-
-    // function editMenu() {
-    //     var currentMenuItem = $(this)
-    //         .parent()
-    //         .parent()
-    //         .data("")
-    // }
-
     // --------------------------------------------------------------
 
     // BUTTON THAT MARKS ORDERS AS COMPLETED
@@ -134,17 +103,18 @@ $(document).ready(function () {
     });
     // --------------------------------------------------------------
 
+    // Function to append new menu item post to HTML inside menuItemContainer
 
-
-    function initalizeMenu() {
+    function initalizeNewMenu() {
         menuItemContainer.empty();
         var menuItemToAdd = [];
         for (var i = 0; i < menuItem.length; i++) {
             menuItemToAdd.push(createNewItem(menuItem[i]));
         }
-        menuItemContainer.append(itemsToAdd);
+        menuItemContainer.append(menuItemToAdd);
     }
 
+    // Constructs HTML for new Menu Item
     function createNewItem(item) {
         var newMenuItemCard = $("<div>");
         newMenuItemCard.addclass("card");
@@ -154,12 +124,22 @@ $(document).ready(function () {
         deleteBtn.text("Delete Item");
         deleteBtn.addclass("delete btn");
         var editBtn = $("<button>");
-        editBtn.text = ("edit order")
+        editBtn.text = ("edit item")
         editBtn.addclass("editBtn");
-        var newItemName = $("<h2>");
         var newItemCategory = $("<h5>");
         newItemCategory.text(menuItem.category);
+        var newItemCost = $("<h5>")
+        newItemCost.text(newItemCost.cost)
     };
+
+
+    functionHandleMenuEdit() {
+        var currentMenuItem = $(this)
+            .parent()
+            .parent()
+            .data("item")
+        window.location.href = "/admin?item_id=" + currentMenuItem.id;
+    }
 
     function handleMenuItemDelete() {
         var currentMenuItem = $(this)
@@ -170,3 +150,24 @@ $(document).ready(function () {
     }
 
 });
+
+    // -----------------VIEW ALL MENU ITEMS------------------------------
+    // Will the menu be automatically displayed when the user logs in? Or will it be a seperate button?
+    // Potential extra feature? Do we want to allow the user to search by category of food item?
+    // function viewFullMenu(category) {
+    //     var categoryString = category || "",
+    //     if (categoryString) {
+    //         categoryString = "/category/" + categoryString;
+    //     }
+    //     // var viewFullMenu = $("viewFullMenu");
+    //     // viewFullMenu.on("click", function (event) {
+    //     //     event.preventDefault();
+    //     $.get("/api/admin/item", + categoryString, (function (data) {
+    //         console.log("Items", data);
+    //         items = data;
+    //         if (!items || !items.length) {
+    //             displayEmpty();
+    //         } else {
+    //             initializeMenu();
+    //         }
+    //     })

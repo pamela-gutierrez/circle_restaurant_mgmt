@@ -17,7 +17,6 @@ $(document).ready(function () {
     var passwordInput = $("input#password-input");
 
     $(document).on("click", "button.editOrder", handleEditOrder);
-    $(document).on("click", "button.deleteOrder", handleDeleteOrder);
     $(document).on("submit", "button.submitOrder", handleSumbitOrder);
 
 
@@ -59,13 +58,18 @@ $(document).ready(function () {
 
     // UPDATE ORDER: gets the data from the order we are updating
     function getOrderData(id) {
-        $.post("/api/orders/" + id, function (data) {
-            if (data) {
-                nameInput.val(data.name);
-                updating = true;
-            }
-        });
+        var orderData = {
+
+        }
     }
+    $.get("/api/orders/" + id, function (data) {
+        if (data) {
+
+            nameInput.val(data.name);
+            updating = true;
+        }
+    });
+}
 
     function updateOrder(item) {
         $.ajax({
@@ -75,15 +79,7 @@ $(document).ready(function () {
     }
 
     // DELETE ITEM FROM ORDER
-    $(".delete-item").on("click", function (event) {
-        $.ajax({
-            method: "DELETE",
-            url: "/api/main/menu/" + id
-        }).then(function () {
-            console.log("deleted order", id);
-            location.reload();
-        })
-    })
+    $(".delete-item").on("click", handleOrderItemDelete)
 
     // ADD ITEM TO ORDER
     $(".addItem").on("click", function (event) {
@@ -93,10 +89,17 @@ $(document).ready(function () {
 
 
     function handleOrderItemDelete() {
+        $.ajax({
+            method: "DELETE",
+            url: "/api/main/menu/" + id
+        }).then(function () {
+            console.log("deleted order", id);
+            location.reload();
+        })
         var currentItem = $(this)
             .parent()
             .parent()
-            .data("")
+            .data("item")
     }
 
     // OrderCart
