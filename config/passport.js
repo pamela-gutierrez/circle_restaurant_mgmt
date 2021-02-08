@@ -21,7 +21,7 @@ passport.use(new LocalStrategy(
         });
       }
       // If none of the above, return the user
-      return done(null, circle_db);
+      return done(null, user);
     });
   }
 ));
