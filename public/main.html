@@ -70,7 +70,7 @@
 		</ul>
 	</div>
 
-	<div class="tabs-content" data-tabs-content="menu-tabs">
+	<div class="tabs-content menuItem-container" data-tabs-content="menu-tabs">
 
 		<!-- Appetizers Menu -->
 		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
@@ -347,7 +347,7 @@
 
 	<!-- Login Modal -->
 	<div class="reveal" id="modalLogin" data-reveal>
-		<form>
+		<form class="modalLogin">
 			<h1>Admin Login</h1>
 			<p class="lead">Enter username and password for UNLIMITED POWAAAAA!!!</p>
 
@@ -372,7 +372,7 @@
 
 	<!-- Cart Modal -->
 	<!-- <div class="reveal" id="modalCart" data-reveal> -->
-		<div class="off-canvas position-right" id="modalCart" data-off-canvas>
+	<div class="off-canvas position-right" id="modalCart" data-off-canvas>
 		<h2>Your Order</h2>
 		<p class="lead">Buy it now! or don't, I'm not your boss</p>
 
@@ -385,7 +385,7 @@
 					<th>Subtotal</th>
 				</tr>
 			</thead>
-			<tbody id="orderCart">
+			<tbody id="activeOrders-container">
 				<tr>
 					<td>Burger</td>
 					<td>20.00</td>
@@ -398,7 +398,7 @@
 		</table>
 
 		<div class="input-group-button">
-			<input type="submit" class="button large expanded" value="Place Order">
+			<input type="submit" class="button large expanded submitOrder" value="Place Order">
 		</div>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>

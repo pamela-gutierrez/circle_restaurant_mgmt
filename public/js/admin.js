@@ -112,7 +112,7 @@ $(document).ready(function () {
             menuItemToAdd.push(createNewItem(menuItem[i]));
         }
         menuItemContainer.append(menuItemToAdd);
-    }
+    };
 
     // Constructs HTML for new Menu Item
     function createNewItem(item) {
@@ -133,11 +133,11 @@ $(document).ready(function () {
     };
 
 
-    functionHandleMenuEdit() {
+    function handleMenuEdit() {
         var currentMenuItem = $(this)
             .parent()
             .parent()
-            .data("item")
+            .data("item");
         window.location.href = "/admin?item_id=" + currentMenuItem.id;
     }
 

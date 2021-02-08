@@ -10,14 +10,14 @@ $(document).ready(function () {
     // --------------------------ADMIN LOGIN--------------------------------
     // Pointers to HTML tags/classes/ids
     var menuItemContainer = $(".menuItem-container");
-    var activeOrders = $(".activeOrders-container");
+    var activeOrders = $("#activeOrders-container");
 
     var loginAdmin = $("form.modalLogin");
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
 
-    $(document).on("click", "button.editOrder", handleEditOrder);
-    $(document).on("submit", "button.submitOrder", handleSumbitOrder);
+    // $(document).on("click", "button.editOrder", handleEditOrder);
+    // $(document).on("submit", "button.submitOrder", handleSubmitOrder);
 
 
     // ADMIN LOGIN
@@ -27,11 +27,13 @@ $(document).ready(function () {
             username: usernameInput.val().trim(),
             password: passwordInput.val().trim()
         };
+        console.log("user data");
+        console.log(userData);
         if (!userData.username || !userData.password) {
             return;
         }
         loginUser(userData.username, userData.password);
-        usernameInput.val("val");
+        usernameInput.val("");
         passwordInput.val("");
         // signUpUser(userData.username, userData.password);
         // usernameInput.val("");
@@ -62,14 +64,13 @@ $(document).ready(function () {
 
         }
     }
-    $.get("/api/orders/" + id, function (data) {
-        if (data) {
+    // $.get("/api/orders/" + id, function (data) {
+    //     if (data) {
+    //         nameInput.val(data.name);
+    //         updating = true;
+    //     }
+    // });
 
-            nameInput.val(data.name);
-            updating = true;
-        }
-    });
-}
 
     function updateOrder(item) {
         $.ajax({
