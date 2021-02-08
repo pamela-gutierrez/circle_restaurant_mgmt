@@ -6,15 +6,50 @@
 
 
 $(document).ready(function () {
+    // --------------------------ADMIN LOGIN--------------------------------
+
+    var loginAdmin = $("form.login");
+    var usernameInput = $("input#username-input");
+    var passwordInput = $("input#password-input");
+
+    loginAdmin.on("submit", function (event) {
+        event.preventDefault();
+        var userData = {
+            username: usernameInput.val().trim(),
+            password: passwordInput.val().trim()
+        };
+        if (!userData.username || !userData.password) {
+            return;
+        }
+        loginUser(userData.username, userData.password);
+        usernameInput.val("val");
+        passwordInput.val("");
+        // signUpUser(userData.username, userData.password);
+        // usernameInput.val("");
+        // passwordInput.val("");
+    });
+
+    function loginUser(username, password) {
+        $.post("/api/admin", {
+            username: username,
+            password: password
+        })
+            .then(function () {
+                window.location.replace("/admin");
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    }
+
+
+
     var orderId;
     // sets a glad for whether or not we're updating a post to be false initially
     var updating = false;
 
     // Getting jQuery references to the itemId
-    var bodyInput = $("#body");
-    var titleInput = $("#title");
-    var cmsForm = $("#cms");
-    var postCategorySelect = $("#category");
+
 
 
     // UPDATE ORDER: gets the data from the order we are updating
