@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 notNull: true,
-                is: /^[a-z]+$/i,
+                is: /[a-z]+/,
                 len: [1, 50]
             }
         },
@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 notNull: true,
-                is: /^[a-z]+$/i,
+                is: /[a-z]+/,
                 len: [1, 50]
             }
         },
@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true,
-                is: /^[a-z]+$/i,
+                is: /[a-z]+/,
                 len: [1, 140]
             }
         },

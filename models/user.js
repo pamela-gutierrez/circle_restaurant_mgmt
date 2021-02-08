@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true,
-                is: /^[a-z]+$/i,
+                is: /[a-z]+/,
                 len: [1, 50]
             }
         },
@@ -22,9 +22,9 @@ module.exports = function(sequelize, DataTypes) {
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
     };
-    // User.addHook("beforeCreate", function(user) {
-    //     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-    // });
+    User.addHook("beforeCreate", function(user) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    });
     // Lines 25-27 are for future models of this application with added logged in roles
     return User;
 }
