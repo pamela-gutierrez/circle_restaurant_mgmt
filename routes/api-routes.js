@@ -28,7 +28,7 @@ module.exports = function (app) {
 
     // Item(Admin):GET, return 1 menu item
     app.get("/api/admin/item/:id", function (req, res) {
-        db.Item.findOne({
+        db.Items.findOne({
             where: {
                 id: req.params.id
             }
@@ -51,7 +51,7 @@ module.exports = function (app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function (req, res) {
-        db.Item.update({
+        db.Items.update({
             name: req.body.name,
             category: req.body.category,
             cost: req.body.cost,
@@ -67,7 +67,7 @@ module.exports = function (app) {
 
     // Item(Admin):DELETE, delete a menu item
     app.delete("/api/admin/menu/:id", function (req, res) {
-        db.Item.destroy({
+        db.Items.destroy({
             where: {
                 id: req.params.id
             }
@@ -78,14 +78,14 @@ module.exports = function (app) {
 
     // Item(User):GET, return all menu items
     app.get("/api/item", function (req, res) {
-        db.Item.findAll({}).then(function (dbItem) {
+        db.Items.findAll({}).then(function (dbItem) {
             res.json(dbItem);
         });
     });
 
     // Item(User):POST, return 1 menu item
     app.get("/api/item/:id", function (req, res) {
-        db.Item.findOne({
+        db.Items.findOne({
             where: {
                 id: req.params.id
             }
@@ -96,7 +96,7 @@ module.exports = function (app) {
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {
-        db.Item.create({
+        db.Items.create({
             seating_id: req.body.seating_id,
             item_id: req.body.item_id,
             item_quantity: req.body.item_quantity,
@@ -109,7 +109,7 @@ module.exports = function (app) {
 
     // Orders(User):PUT, update item in order
     app.put("/api/orders/:id", function (req, res) {
-        db.Item.update({
+        db.Items.update({
             seating_id: req.body.seating_id,
             item_id: req.body.item_id,
             item_quantity: req.body.item_quantity,
@@ -126,7 +126,7 @@ module.exports = function (app) {
 
     // Orders(User):DELETE, delete item in order
     app.delete("/api/orders/:id", function (req, res) {
-        db.Item.destroy({
+        db.Items.destroy({
             where: {
                 id: req.params.id
             }
@@ -137,14 +137,14 @@ module.exports = function (app) {
 
     // Orders(Admin):GET, return all orders
     app.get("/admin/orders", function (req, res) {
-        db.Item.findAll({}).then(function (dbItem) {
+        db.Items.findAll({}).then(function (dbItem) {
             res.json(dbItem);
         });
     });
 
     // Orders(Admin):PUT, update orders to "complete"
     app.put("/admin/orders/:id", function (req, res) {
-        db.Item.update(req.body,
+        db.Items.update(req.body,
             {
                 where: {
                     complete: req.params.complete
