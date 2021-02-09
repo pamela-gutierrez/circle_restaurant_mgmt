@@ -272,6 +272,16 @@ function updateMenuItem(e) {
     });
 }
 
+function deleteMenuItem(e) {
+    e.preventDefault();
+    var currentMenuItemId = this.getAttribute("data-id");
+    $.ajax({
+        method: "DELETE",
+        url: "/api/admin/item/" + currentMenuItemId
+    }).then(function() {
+        window.location.href= "/admin";
+    })
+}
 
 function getSingleItem(e) {
     e.preventDefault();
@@ -304,4 +314,5 @@ $(document).ready(function () {
     // editItem.addEventListener("click", getSingleItem);
     $(document).on("click", "button.editItem", getSingleItem);
     $(document).on("click", "button#saveItem", updateMenuItem);
+    $(document).on("click", "button#deleteItem", deleteMenuItem);
 });

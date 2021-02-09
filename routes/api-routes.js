@@ -66,7 +66,7 @@ module.exports = function (app) {
     });
 
     // Item(Admin):DELETE, delete a menu item
-    app.delete("/api/admin/menu/:id", function (req, res) {
+    app.delete("/api/admin/item/:id", function (req, res) {
         db.Items.destroy({
             where: {
                 id: req.params.id
