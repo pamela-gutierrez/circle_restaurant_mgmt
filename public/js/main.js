@@ -64,12 +64,12 @@ $(document).ready(function () {
 
         }
     }
-    $.get("/api/orders/" + id, function (data) {
-        if (data) {
-            nameInput.val(data.name);
-            updating = true;
-        }
-    });
+    // $.get("/api/orders/" + id, function (data) {
+    //     if (data) {
+    //         nameInput.val(data.name);
+    //         updating = true;
+    //     }
+    // });
 
 
     function updateOrder(item) {
