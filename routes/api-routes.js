@@ -13,10 +13,10 @@ module.exports = function (app) {
     });
 
     // Log out redirect from admin page to home page
-    app.get("/logout", function(req, res) {
+    app.get("/logout", function (req, res) {
         req.logout();
         res.redirect("/");
-      });    
+    });
 
     // Item(Admin):GET, return all menu items
     app.get("/api/admin/item", function (req, res) {
@@ -51,6 +51,7 @@ module.exports = function (app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function (req, res) {
+        console.log("WE ARE HERE api-routes.js");
         db.Items.update({
             name: req.body.name,
             category: req.body.category,
@@ -66,7 +67,7 @@ module.exports = function (app) {
     });
 
     // Item(Admin):DELETE, delete a menu item
-    app.delete("/api/admin/menu/:id", function (req, res) {
+    app.delete("/api/admin/item/:id", function (req, res) {
         db.Items.destroy({
             where: {
                 id: req.params.id
