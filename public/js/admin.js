@@ -195,11 +195,12 @@ function createNewCard(items) {
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button float-right").data("open", "editItemModal").text("Edit Item");
+    var addButton = $("<button>").addClass("button align-right").data("open", "editItemModal").text("Edit Item");
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
+    
     $("#sandwichItem").append(newOrderCard);
 }
 
