@@ -158,3 +158,4 @@ function createNewCard(items) {
 $(document).ready(function () {
     renderMenu();
 });
+
