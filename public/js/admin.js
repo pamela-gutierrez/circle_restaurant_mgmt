@@ -246,28 +246,31 @@ function updateMenuItem(e) {
     e.preventDefault();
 
     var itemId = this.getAttribute("data-id");
-    var nameInput = $("#add-item-menu");
-    var categoryInput = $("#add-item-ctgy");
-    var descriptionInput = $("#add-item-desc");
-    var costInput = $("#add-item-cost");
+    var nameInput = $("#edit-item-menu").val().trim();
+    var categoryInput = $("#edit-item-ctgy").val().trim();
+    var descriptionInput = $("#edit-item-desc").val().trim();
+    var costInput = $("#edit-item-cost").val().trim();
+    var newMenuItem = {};
+
     // wont submit if form is empty or missing body or title
-    if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
-        console.log(itemId);
-        console.log(nameInput);
-        console.log(categoryInput);
-        console.log(descriptionInput);
-        console.log(costInput);
+    if (!nameInput || !categoryInput || !descriptionInput || !costInput) {
         console.log("INVALID PARAMETERS");
         return;
+    } else {
+        newMenuItem = {
+            id: itemId,
+            name: nameInput,
+            category: categoryInput,
+            description: descriptionInput,
+            cost: costInput
+        };
     }
-    var newMenuItem = {
-        name: nameInput.val().trim(),
-        category: categoryInput.val().trim(),
-        description: descriptionInput.val().trim(),
-        cost: costInput.val().trim()
-    };
 
-    $.post("/api/admin/item", newMenuItem, function () {
+    $.ajax({
+        url: "/api/admin/item/" + itemId,
+        type: "PUT",
+        data: newMenuItem
+    }).then(function () {
         window.location.href = "/admin";
     });
 }
@@ -280,12 +283,12 @@ function getSingleItem(e) {
     $.ajax({
         url: "/api/admin/item/" + currentMenuItemId,
         type: "GET"
-    }).then(function(item) {
-        $("#edit-item-menu").val(item.name);
+    }).then(function (item) {
+        $("#edit-item-menu").val(item.name).attr("data-name", item.name);
         // $("#edit-item-menu").attr("data-id", currentMenuItemId);
-        $("#edit-item-ctgy").val(item.category);
-        $("#edit-item-desc").val(item.description);
-        $("#edit-item-cost").val(item.cost);
+        $("#edit-item-ctgy").val(item.category).attr("data-ctgy", item.category);
+        $("#edit-item-desc").val(item.description).attr("data-desc", item.description);
+        $("#edit-item-cost").val(item.cost).attr("data-cost", item.cost);
         $("#saveItem").attr("data-id", currentMenuItemId);
         $("#deleteItem").attr("data-id", currentMenuItemId);
     })
@@ -299,6 +302,7 @@ $(document).ready(function () {
     addForm = document.getElementById("addMenuItemModal");
     // editItem = document.querySelectorAll("editItem");
     // console.log(editItem);
+
     // Event Listeners
     addForm.addEventListener('submit', saveMenuItem);
     // editItem.addEventListener("click", getSingleItem);
