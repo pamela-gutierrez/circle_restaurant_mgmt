@@ -200,19 +200,27 @@ function createNewCard(items) {
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
-    
-    $("#sandwichItem").append(newOrderCard);
+    switch (items.category) {
+        case "Sandwiches":
+            $("#adminSandwichItem").append(newOrderCard);
+            break;
+        case "Burgers":
+            $("#adminBurgerItem").append(newOrderCard);
+            break;
+        case "Salads":
+            $("#adminSaladItem").append(newOrderCard);
+            break;
+        case "Drinks":
+            $("#adminDrinkItem").append(newOrderCard);
+            break;
+        default:
+            console.log("invalid category")
+            break;
+    }
 }
 
 // ----- Event Listeners
 $(document).ready(function () {
     renderMenu();
-
-
-    $("#saveNewItem").on('click', function (event) {
-        event.preventDefault();
-        console.log("EVENT")
-        console.log(event);
-    });
 });
 

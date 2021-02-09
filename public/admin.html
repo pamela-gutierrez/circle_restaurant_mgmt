@@ -60,46 +60,41 @@
 				<a href="#menuSalads" role="tab">Salads</a>
 			</li>
 			<li class="tabs-title" role="presentation">
-				<a href="#menuSoftServe" role="tab">Soft-Serve</a>
-			</li>
-			<li class="tabs-title" role="presentation">
 				<a href="#menuDrinks" role="tab">Drinks</a>
 			</li>
 		</ul>
-		<button type="button" class="button" id="addItem-modal" data-open="addItemModal">Add Item</button>
+		<button type="button" class="button" data-open="addItemModal">Add Item</button>
 	</div>
 
 	<div class="tabs-content" data-tabs-content="menu-tabs">
 		<div class="menuRender">
 
 		</div>
-		<!-- Appetizers Menu -->
+		<!-- Sandwich Menu -->
 		<div class="tabs-panel is-active" data-menu-items="sandwiches" id="menuSandwiches">
-			<div class="flex-container " id="sandwichItem">
+			<div class="flex-container" id="adminSandwichItem">
+				<!-- Sandwich Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Burgers Menu -->
 		<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
-			<div class="flex-container ">
+			<div class="flex-container" id="adminBurgerItem">
+				<!-- Burgers Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Salads Menu -->
 		<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
-			<div class="flex-container ">
-			</div>
-		</div>
-
-		<!-- Ice Cream Menu -->
-		<div class="tabs-panel" data-menu-items="icecream" id="menuSoftServe">
-			<div class="flex-container ">
+			<div class="flex-container" id="adminSaladItem">
+				<!-- Salads Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Drinks Menu -->
 		<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
-			<div class="flex-container ">
+			<div class="flex-container" id="adminDrinkItem">
+				<!-- Drink Items Added Jquery-->
 			</div>
 		</div>
 	</div>
@@ -136,36 +131,35 @@
 
 	<!-- Add Item Modal -->
 	<div class="reveal" id="addItemModal" data-reveal>
-		<form class="addItemModal">
+		<form id="addMenuItemModal">
 			<label>
 				<h2>Item name:</h2>
 				<input type="text" required id="add-item-menu">
 			</label>
-			<label>Category
-				<select id="add-item-ctgy">
-					<option value="Sandwich">Sandwich</option>
-					<option value="Burgers">Burgers</option>
-					<option value="Salads">Salads</option>
-					<option value="Drinks">Drinks</option>
-				</select>
+			<label>Category:
+				<input type="text" required id="add-item-ctgy">
 			</label>
 			<label>Description:
 				<input type="text" required id="add-item-desc">
 			</label>
 			<label>Item cost:
-				<input type="text" required id="add-item-cost">
-				<!-- <input type="text" required id="add-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/gm"> -->
+				<input type="text" required id="add-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
 			</label>
 			<div class="row flex-container">
 				<div class="input-group-button">
-					<button type="submit" class="button large success" id="saveNewItem">Save</button>
+					<button type="button" class="button large success" id="saveItem">Save</button>
 				</div>
+				<!-- <div class="input-group-button">
+					<button type="button" class="button large alert" id="deleteItem">Delete</button>
+				</div> -->
 			</div>
 		</form>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
+
+
 
 
 	<script>

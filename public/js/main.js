@@ -64,6 +64,13 @@ $(document).ready(function () {
 
         }
     }
+    // $.get("/api/orders/" + id, function (data) {
+    //     if (data) {
+    //         nameInput.val(data.name);
+    //         updating = true;
+    //     }
+    // });
+
 
     function updateOrder(item) {
         $.ajax({
@@ -105,4 +112,49 @@ $(document).ready(function () {
 
 })
 
+var renderMenu = () => {
+    return $.ajax({
+        url: "/api/admin/item",
+        type: "GET"
+    }).then((menu) => {
+        console.log(menu);
+        for (var i = 0; i < menu.length; i++) {
+            createNewCard(menu[i]);
+        }
+    })
+}
 
+// Prints cards onto main.html page
+function createNewCard(items) {
+    var newOrderCard = $("<div>").addClass("card").css("width", "300px");
+    var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
+    var itemName = $("<h4>").text(items.name + " ");
+    var itemDescription = $("<p>").text(items.description + " ");
+    var newFooter = $("<div>").addClass("card-divider flex-container footer");
+    var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
+    var addButton = $("<button>").addClass("button align-right").data("open", "editItemModal").text("Edit Item");
+    itemCost.append(addButton);
+    newFooter.append(itemCost)
+    newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
+    newOrderCard.append(newOrderCardHeading);
+    switch (items.category) {
+        case "Sandwiches":
+            $("#sandwichItem").append(newOrderCard);
+            break;
+        case "Burgers":
+            $("#burgerItem").append(newOrderCard);
+            break;
+        case "Salads":
+            $("#saladItem").append(newOrderCard);
+            break;
+        case "Drinks":
+            $("#drinkItem").append(newOrderCard);
+            break;
+        default:
+            console.log("invalid category")
+            break;
+    }
+}
+$(document).ready(function () {
+    renderMenu();
+});
