@@ -38,8 +38,8 @@ module.exports = function (app) {
     });
 
     // Item(Admin):POST, create a new menu item
-    app.post("/api/admin/item/:id", function (req, res) {
-        db.Item.create({
+    app.post("/api/admin/item", function (req, res) {
+        db.Items.create({
             name: req.body.name,
             category: req.body.category,
             cost: req.body.cost,
