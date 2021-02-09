@@ -175,7 +175,6 @@
 // API CALLS
 
 
-
 var renderMenu = () => {
     return $.ajax({
         url: "/api/admin/item",
