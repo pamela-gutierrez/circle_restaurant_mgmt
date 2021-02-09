@@ -1,6 +1,5 @@
 // from the main page we user should be able to:
 // login the admin
-// view the menu
 // add items to their order
 // remove items from their order
 // submit their order
@@ -42,7 +41,7 @@ $(document).ready(function () {
 
     // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
-        $.post("/api/admin", {
+        $.get("/", {
             username: username,
             password: password
         })
@@ -59,28 +58,28 @@ $(document).ready(function () {
     var updating = false;
 
     // UPDATE ORDER: gets the data from the order we are updating
+    // We need this to get the id that we'll pass to the get request below
     function getOrderData(id) {
         var orderData = {
 
         }
     }
-    // $.get("/api/orders/" + id, function (data) {
-    //     if (data) {
-    //         nameInput.val(data.name);
-    //         updating = true;
-    //     }
-    // });
+    $.get("/api/orders/" + id, function (data) {
+        if (data) {
+            nameInput.val(data.name);
+            updating = true;
+        }
+    });
 
 
     function updateOrder(item) {
         $.ajax({
             method: "PUT",
-            url: "/api/admin/item/:id",
+            url: "/api/admin/item/:id"
         })
     }
 
-    // DELETE ITEM FROM ORDER
-    $(".delete-item").on("click", handleOrderItemDelete)
+
 
     // ADD ITEM TO ORDER
     $(".addItem").on("click", function (event) {
@@ -88,6 +87,14 @@ $(document).ready(function () {
         // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
     })
 
+    // Submit Order
+    //  function handleSubmitOrder (){
+
+    //  }
+
+
+    // DELETE ITEM FROM ORDER
+    $(".delete-item").on("click", handleOrderItemDelete)
 
     function handleOrderItemDelete() {
         $.ajax({
@@ -102,9 +109,6 @@ $(document).ready(function () {
             .parent()
             .data("item")
     }
-
-    // OrderCart
-    // needs name and cost
 
 })
 
