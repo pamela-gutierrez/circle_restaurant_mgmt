@@ -194,7 +194,7 @@ function createNewCard(items) {
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button float-right").data("open", "editItemModal").text("Edit Item");
+    var addButton = $("<button>").addClass("button float-right").attr("data-open", "editItemModal").attr("data-id", items.id).text("Edit Item");
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
@@ -248,7 +248,7 @@ $(document).ready(function () {
 
     // Grab html elements
     addForm = document.getElementById("addMenuItemModal");
-
+    // editItem = document.querySelectorAll
     // Event Listeners
     addForm.addEventListener('submit', saveMenuItem);
 });
