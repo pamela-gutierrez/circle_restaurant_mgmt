@@ -200,8 +200,23 @@ function createNewCard(items) {
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
-    
-    $("#sandwichItem").append(newOrderCard);
+    switch(items.category) {
+    case sandwich:
+        items.category == "Sandwiches"
+        $("#sandwichItem").append(newOrderCard);
+    case burger:
+        items.category == "Burgers"
+        $("#burgerItem").append(newOrderCard);
+
+    case salad:
+        items.category == "Salads"
+        $("#saladItem").append(newOrderCard);
+    case iceCream:
+        $("#icecreamItem").append(newOrderCard);
+    case drink:
+        items.category == "Drinks"
+        $("#drinkItem").append(newOrderCard);
+    }
 }
 
 // ----- Event Listeners
