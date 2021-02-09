@@ -69,33 +69,33 @@
 
 	<div class="tabs-content menuItem-container" data-tabs-content="menu-tabs">
 
-				<!-- Sandwich Menu -->
-				<div class="tabs-panel is-active" data-menu-items="sandwiches" id="menuSandwiches">
-					<div class="flex-container" id="sandwichItem">
-						<!-- Sandwich Items Added Jquery-->
-					</div>
-				</div>
-		
-				<!-- Burgers Menu -->
-				<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
-					<div class="flex-container" id="burgerItem">
-						<!-- Burgers Items Added Jquery-->
-					</div>
-				</div>
-		
-				<!-- Salads Menu -->
-				<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
-					<div class="flex-container" id="saladItem">
-						<!-- Salads Items Added Jquery-->
-					</div>
-				</div>
-		
-				<!-- Drinks Menu -->
-				<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
-					<div class="flex-container" id="drinkItem">
-						<!-- Drink Items Added Jquery-->
-					</div>
-				</div>
+		<!-- Sandwich Menu -->
+		<div class="tabs-panel is-active" data-menu-items="sandwiches" id="menuSandwiches">
+			<div class="flex-container" id="sandwichItem">
+				<!-- Sandwich Items Added Jquery-->
+			</div>
+		</div>
+
+		<!-- Burgers Menu -->
+		<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
+			<div class="flex-container" id="burgerItem">
+				<!-- Burgers Items Added Jquery-->
+			</div>
+		</div>
+
+		<!-- Salads Menu -->
+		<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
+			<div class="flex-container" id="saladItem">
+				<!-- Salads Items Added Jquery-->
+			</div>
+		</div>
+
+		<!-- Drinks Menu -->
+		<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
+			<div class="flex-container" id="drinkItem">
+				<!-- Drink Items Added Jquery-->
+			</div>
+		</div>
 	</div>
 
 	<!-- Login Modal -->
@@ -128,18 +128,19 @@
 	<div class="off-canvas position-right" id="modalCart" data-off-canvas>
 		<h2>Your Order</h2>
 		<p class="lead">Buy it now! or don't, I'm not your boss</p>
-
 		<!-- <table class="stack"> -->
 		<table>
-
 			<thead>
 				<tr>
 					<th>Item</th>
-					<th>Subtotal</th>
+					<th>Quantity</th>
+					<th>Price</th>
 				</tr>
 			</thead>
 			<tbody id="activeOrders-container">
-
+				<td class="cartItem"></td>
+				<td class="cartItemQuantity"></td>
+				<td class="cartItemPrice"></td>
 			</tbody>
 			<tfoot>
 				<tr class="totalAmount">
@@ -148,7 +149,6 @@
 				</tr>
 			</tfoot>
 		</table>
-
 		<div class="input-group-button">
 			<input type="submit" class="button large expanded submitOrder" value="Place Order">
 		</div>

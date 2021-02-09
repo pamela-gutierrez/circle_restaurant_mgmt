@@ -72,14 +72,12 @@ $(document).ready(function () {
     // });
 
 
-    function updateOrder(item) {
-        $.ajax({
-            method: "PUT",
-            url: "/api/admin/item/:id"
-        })
-    }
-
-
+    // function updateOrder(item) {
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "/api/admin/item/:id"
+    //     })
+    // }
 
     // ADD ITEM TO CART
     // $(".addItem").on("click", function (event) {
@@ -87,13 +85,14 @@ $(document).ready(function () {
     //     // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
     // })
 
-    function getOrderData(id) {
-        $.get("/api/orders/" + id, function (data) {
-            if (data) {
+    // function getOrderData(id) {
+    //     $.get("/api/orders/" + id, function (data) {
+    //         if (data) {
 
-            }
-        })
-    }
+    //         }
+    //     })
+    // }
+
 
     var addToCart = (id, data) => {
         return $.ajax({
@@ -130,7 +129,6 @@ $(document).ready(function () {
             .parent()
             .data("item")
     }
-
 })
 
 var renderMenu = () => {
