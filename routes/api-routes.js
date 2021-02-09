@@ -7,9 +7,11 @@ var passport = require("../config/passport.js");
 // Routes
 module.exports = function (app) {
 
+
     app.post("/api/main", passport.authenticate("local"), function (req, res) {
         res.redirect("/admin");
     });
+
 
     // Item(Admin):GET, return all menu items
     app.get("/api/admin/item", function (req, res) {
