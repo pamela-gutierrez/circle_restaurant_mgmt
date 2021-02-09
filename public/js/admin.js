@@ -253,7 +253,9 @@ function updateMenuItem(e) {
     var updatedItem = {};
 
     // wont submit if form is empty or missing body or title
+
     if (!nameInput || !categoryInput || !descriptionInput || !costInput) {
+
         console.log("INVALID PARAMETERS");
         return;
     } else {
