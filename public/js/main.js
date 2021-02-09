@@ -108,6 +108,12 @@ $(document).ready(function () {
 
     })
 
+    // Renders Added Item's Into Order Modal
+    function renderOrderModal() {
+        $("#cartItem").val();
+        $("#cartItemPrice").val();
+        
+    }
     // Submit Order
     //  function handleSubmitOrder (){
 
@@ -133,6 +139,14 @@ $(document).ready(function () {
 
 })
 
+
+
+
+
+
+
+
+// ------------------------------------ Renders Menu Item's By Category Onto Page -------------------------------- //
 var renderMenu = () => {
     return $.ajax({
         url: "/api/admin/item",

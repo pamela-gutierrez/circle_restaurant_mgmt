@@ -252,11 +252,6 @@ function updateMenuItem(e) {
     var costInput = $("#add-item-cost");
     // wont submit if form is empty or missing body or title
     if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
-        console.log(itemId);
-        console.log(nameInput);
-        console.log(categoryInput);
-        console.log(descriptionInput);
-        console.log(costInput);
         console.log("INVALID PARAMETERS");
         return;
     }
