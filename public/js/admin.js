@@ -189,7 +189,7 @@ var renderMenu = () => {
 }
 
 function createNewCard(items) {
-    var newOrderCard = $("<div>").addClass("card").css("width","300px");
+    var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
     var itemName = $("<h4>").text(items.name + " ");
     var itemDescription = $("<p>").text(items.description + " ");
@@ -200,22 +200,22 @@ function createNewCard(items) {
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
-    switch(items.category) {
-    case sandwich:
-        items.category == "Sandwiches"
-        $("#sandwichItem").append(newOrderCard);
-    case burger:
-        items.category == "Burgers"
-        $("#burgerItem").append(newOrderCard);
-
-    case salad:
-        items.category == "Salads"
-        $("#saladItem").append(newOrderCard);
-    case iceCream:
-        $("#icecreamItem").append(newOrderCard);
-    case drink:
-        items.category == "Drinks"
-        $("#drinkItem").append(newOrderCard);
+    switch (items.category) {
+        case "Sandwiches":
+            $("#sandwichItem").append(newOrderCard);
+            break;
+        case "Burgers":
+            $("#burgerItem").append(newOrderCard);
+            break;
+        case "Salads":
+            $("#saladItem").append(newOrderCard);
+            break;
+        case "Drinks":
+            $("#drinkItem").append(newOrderCard);
+            break;
+        default:
+            console.log("invalid category")
+            break;
     }
 }
 
