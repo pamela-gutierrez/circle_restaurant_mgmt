@@ -81,10 +81,31 @@ $(document).ready(function () {
 
 
 
-    // ADD ITEM TO ORDER
-    $(".addItem").on("click", function (event) {
+    // ADD ITEM TO CART
+    // $(".addItem").on("click", function (event) {
+    //     event.preventDefault();
+    //     // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
+    // })
+
+    function getOrderData(id) {
+        $.get("/api/orders/" + id, function (data) {
+            if (data) {
+
+            }
+        })
+    }
+
+    var addToCart = (id, data) => {
+        return $.ajax({
+            url: "/api/orders" + id,
+            type: "PUT",
+            data: data
+        })
+    }
+
+    $(document).on("click", "button.addItem", event => {
         event.preventDefault();
-        // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
+
     })
 
     // Submit Order
@@ -132,7 +153,7 @@ function createNewCard(items) {
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button align-right").data("open", "editItemModal").text("Edit Item");
+    var addButton = $("<button>").addClass("button addItem align-right").attr("data-id", items.id).text("Add Item");
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
