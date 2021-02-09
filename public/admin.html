@@ -63,7 +63,7 @@
 				<a href="#menuDrinks" role="tab">Drinks</a>
 			</li>
 		</ul>
-		<button type="button" class="button" data-open="addItemModal">Add Item</button>
+		<button type="button" class="button" id="addItem-modal" data-open="addItemModal">Add Item</button>
 	</div>
 
 	<div class="tabs-content" data-tabs-content="menu-tabs">
@@ -111,7 +111,8 @@
 				<input type="text" required id="edit-item-desc">
 			</label>
 			<label>Item cost:
-				<input type="text" required id="edit-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
+				<input type="text" required id="edit-item-cost">
+				<!-- <input type="text" required id="edit-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/"> -->
 			</label>
 			<div class="row flex-container">
 				<div class="input-group-button">
@@ -134,18 +135,24 @@
 				<h2>Item name:</h2>
 				<input type="text" required id="add-item-menu">
 			</label>
-			<label>Category:
-				<input type="text" required id="add-item-ctgy">
+			<label>Category
+				<select id="add-item-ctgy">
+					<option value="Sandwiches">Sandwiches</option>
+					<option value="Burgers">Burgers</option>
+					<option value="Salads">Salads</option>
+					<option value="Drinks">Drinks</option>
+				</select>
 			</label>
 			<label>Description:
 				<input type="text" required id="add-item-desc">
 			</label>
 			<label>Item cost:
-				<input type="text" required id="add-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
+				<input type="text" required id="add-item-cost">
+				<!-- <input type="text" required id="add-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/"> -->
 			</label>
 			<div class="row flex-container">
 				<div class="input-group-button">
-					<button type="button" class="button large success" id="saveItem">Save</button>
+					<button type="submit" class="button large success" id="saveNewItem">Save</button>
 				</div>
 				<!-- <div class="input-group-button">
 					<button type="button" class="button large alert" id="deleteItem">Delete</button>

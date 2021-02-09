@@ -195,7 +195,7 @@ function createNewCard(items) {
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button align-right").data("open", "editItemModal").text("Edit Item");
+    var addButton = $("<button>").addClass("button float-right").data("open", "editItemModal").text("Edit Item");
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
@@ -219,8 +219,37 @@ function createNewCard(items) {
     }
 }
 
-// ----- Event Listeners
+function saveMenuItem(e) {
+    e.preventDefault();
+
+    var nameInput = $("#add-item-menu");
+    var categoryInput = $("#add-item-ctgy");
+    var descriptionInput = $("#add-item-desc");
+    var costInput = $("#add-item-cost");
+    // wont submit if form is empty or missing body or title
+    if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
+        console.log("INVALID PARAMETERS");
+        return;
+    }
+    var newMenuItem = {
+        name: nameInput.val().trim(),
+        category: categoryInput.val().trim(),
+        description: descriptionInput.val().trim(),
+        cost: costInput.val().trim()
+    };
+
+    $.post("/api/admin/item", newMenuItem, function () {
+        window.location.href = "/admin";
+    });
+}
+
+// On ready
 $(document).ready(function () {
     renderMenu();
-});
 
+    // Grab html elements
+    addForm = document.getElementById("addMenuItemModal");
+
+    // Event Listeners
+    addForm.addEventListener('submit', saveMenuItem);
+});
