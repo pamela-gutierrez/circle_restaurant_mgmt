@@ -190,8 +190,8 @@ var renderMenu = () => {
 function createNewCard(items) {
     var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
-    var itemName = $("<h4>").text(items.name + " ");
-    var itemDescription = $("<p>").text(items.description + " ");
+    var itemName = $("<h4>").text(items.name);
+    var itemDescription = $("<p>").text(items.description);
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
     var addButton = $("<button>").addClass("editItem button float-right").attr("data-open", "editItemModal").attr("data-id", items.id).text("Edit Item");
@@ -242,6 +242,37 @@ function saveMenuItem(e) {
     });
 }
 
+function updateMenuItem(e) {
+    e.preventDefault();
+
+    var itemId = this.getAttribute("data-id");
+    var nameInput = $("#add-item-menu");
+    var categoryInput = $("#add-item-ctgy");
+    var descriptionInput = $("#add-item-desc");
+    var costInput = $("#add-item-cost");
+    // wont submit if form is empty or missing body or title
+    if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
+        console.log(itemId);
+        console.log(nameInput);
+        console.log(categoryInput);
+        console.log(descriptionInput);
+        console.log(costInput);
+        console.log("INVALID PARAMETERS");
+        return;
+    }
+    var newMenuItem = {
+        name: nameInput.val().trim(),
+        category: categoryInput.val().trim(),
+        description: descriptionInput.val().trim(),
+        cost: costInput.val().trim()
+    };
+
+    $.post("/api/admin/item", newMenuItem, function () {
+        window.location.href = "/admin";
+    });
+}
+
+
 function getSingleItem(e) {
     e.preventDefault();
     var currentMenuItemId = this.getAttribute("data-id");
@@ -251,9 +282,12 @@ function getSingleItem(e) {
         type: "GET"
     }).then(function(item) {
         $("#edit-item-menu").val(item.name);
+        // $("#edit-item-menu").attr("data-id", currentMenuItemId);
         $("#edit-item-ctgy").val(item.category);
         $("#edit-item-desc").val(item.description);
         $("#edit-item-cost").val(item.cost);
+        $("#saveItem").attr("data-id", currentMenuItemId);
+        $("#deleteItem").attr("data-id", currentMenuItemId);
     })
 }
 
@@ -269,4 +303,5 @@ $(document).ready(function () {
     addForm.addEventListener('submit', saveMenuItem);
     // editItem.addEventListener("click", getSingleItem);
     $(document).on("click", "button.editItem", getSingleItem);
+    $(document).on("click", "button#saveItem", updateMenuItem);
 });
