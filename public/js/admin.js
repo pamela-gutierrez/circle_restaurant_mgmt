@@ -202,16 +202,16 @@ function createNewCard(items) {
     newOrderCard.append(newOrderCardHeading);
     switch (items.category) {
         case "Sandwiches":
-            $("#sandwichItem").append(newOrderCard);
+            $("#adminSandwichItem").append(newOrderCard);
             break;
         case "Burgers":
-            $("#burgerItem").append(newOrderCard);
+            $("#adminBurgerItem").append(newOrderCard);
             break;
         case "Salads":
-            $("#saladItem").append(newOrderCard);
+            $("#adminSaladItem").append(newOrderCard);
             break;
         case "Drinks":
-            $("#drinkItem").append(newOrderCard);
+            $("#adminDrinkItem").append(newOrderCard);
             break;
         default:
             console.log("invalid category")

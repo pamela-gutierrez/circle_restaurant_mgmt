@@ -112,6 +112,18 @@ $(document).ready(function () {
 
 })
 
+var renderMenu = () => {
+    return $.ajax({
+        url: "/api/admin/item",
+        type: "GET"
+    }).then((menu) => {
+        console.log(menu);
+        for (var i = 0; i < menu.length; i++) {
+            createNewCard(menu[i]);
+        }
+    })
+}
+
 // Prints cards onto main.html page
 function createNewCard(items) {
     var newOrderCard = $("<div>").addClass("card").css("width", "300px");
@@ -143,3 +155,7 @@ function createNewCard(items) {
             break;
     }
 }
+$(document).ready(function () {
+    renderMenu();
+});
+
