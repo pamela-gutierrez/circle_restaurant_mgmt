@@ -146,5 +146,9 @@ module.exports = function (app) {
                 res.json(dbItem)
             });
     });
+
+    // Seats: PUT, update a seat to be occupied, /api/seats/:id
+
+    // Seats: POST, /api/orders/seating/:id
 };
 
