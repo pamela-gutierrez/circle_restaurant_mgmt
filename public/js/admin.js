@@ -250,14 +250,14 @@ function updateMenuItem(e) {
     var categoryInput = $("#edit-item-ctgy").val().trim();
     var descriptionInput = $("#edit-item-desc").val().trim();
     var costInput = $("#edit-item-cost").val().trim();
-    var newMenuItem = {};
+    var updatedItem = {};
 
     // wont submit if form is empty or missing body or title
     if (!nameInput || !categoryInput || !descriptionInput || !costInput) {
         console.log("INVALID PARAMETERS");
         return;
     } else {
-        newMenuItem = {
+        updatedItem = {
             id: itemId,
             name: nameInput,
             category: categoryInput,
@@ -269,7 +269,7 @@ function updateMenuItem(e) {
     $.ajax({
         url: "/api/admin/item/" + itemId,
         type: "PUT",
-        data: newMenuItem
+        data: updatedItem
     }).then(function () {
         window.location.href = "/admin";
     });
