@@ -187,7 +187,7 @@ var renderMenu = () => {
         for (var i = 0; i < menu.length; i++) {
 
 
-            createNewCard(menu[i]);
+            // createNewCard(menu[i]);
 
             // itemsAdd.push(createNewCard(items[i]));
         }

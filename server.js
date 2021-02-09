@@ -16,12 +16,19 @@ app.use(session({ secret: "circle_management", resave: true, saveUninitialized: 
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+//Handlebars
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+
+var routes = require("./controller/menuController.js");
+app.use(routes);
+
+db.sequelize.sync().then(function () {
+    app.listen(PORT, function () {
         console.log("Thank you for connecting to Circle Contactless Ordering and Menu Management")
     });
-  });
-  
+});

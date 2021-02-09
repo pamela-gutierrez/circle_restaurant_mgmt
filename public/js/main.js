@@ -3,7 +3,7 @@
 // add items to their order
 // remove items from their order
 // submit their order
-
+// var helpers = require('handlebars-helpers');
 
 $(document).ready(function () {
     // --------------------------ADMIN LOGIN--------------------------------
@@ -14,6 +14,8 @@ $(document).ready(function () {
     var loginAdmin = $("form.modalLogin");
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
+    var menuCategorySelect = document.getElementById('category');
+
 
     // $(document).on("click", "button.editOrder", handleEditOrder);
     // $(document).on("submit", "button.submitOrder", handleSubmitOrder);
@@ -41,7 +43,6 @@ $(document).ready(function () {
     // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
         $.post("/api/main", {
-
             username: username,
             password: password
         })
@@ -64,12 +65,12 @@ $(document).ready(function () {
 
         }
     }
-    $.get("/api/orders/" + id, function (data) {
-        if (data) {
-            nameInput.val(data.name);
-            updating = true;
-        }
-    });
+    // $.get("/api/orders/" + id, function (data) {
+    //     if (data) {
+    //         nameInput.val(data.name);
+    //         updating = true;
+    //     }
+    // });
 
 
     function updateOrder(item) {
@@ -110,6 +111,13 @@ $(document).ready(function () {
             .data("item")
     }
 
-})
+    var handleCategoryChange = (e) => {
+        var newMenuCategory = e.target.value;
+        console.log("Here");
+        console.log(newMenuCategory);
+        getMenuItems(newMenuCategory);
+    }
 
+    menuCategorySelect.addEventListener('change', handleCategoryChange);
 
+});
