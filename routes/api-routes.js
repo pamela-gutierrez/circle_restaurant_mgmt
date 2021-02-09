@@ -7,11 +7,16 @@ var passport = require("../config/passport.js");
 // Routes
 module.exports = function (app) {
 
-
+    // Redirects User when logging in from main page to admin page
     app.post("/api/main", passport.authenticate("local"), function (req, res) {
         res.redirect("/admin");
     });
 
+    // Log out redirect from admin page to home page
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+      });    
 
     // Item(Admin):GET, return all menu items
     app.get("/api/admin/item", function (req, res) {
