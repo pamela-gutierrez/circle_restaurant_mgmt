@@ -37,7 +37,7 @@
 		</div>
 		<div class="top-bar-right">
 			<ul class="dropdown menu" data-dropdown-menu>
-				<li><button type="button" class="button secondary">Logout</button></li>
+				<li><a href="/logout">Logout</a></li>
 				<li><button type="button" class="button" data-open="modalCart">View Orders</button></li>
 			</ul>
 		</div>
@@ -51,7 +51,7 @@
 	<div class="flex-container">
 		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="menu-tabs">
 			<li class="tabs-title is-active" role="presentation">
-				<a href="#menuAppetizers" role="tab">Appetizers</a>
+				<a href="#menuSandwiches" role="tab">Sandwiches</a>
 			</li>
 			<li class="tabs-title" role="presentation">
 				<a href="#menuBurgers" role="tab">Burgers</a>
@@ -60,324 +60,59 @@
 				<a href="#menuSalads" role="tab">Salads</a>
 			</li>
 			<li class="tabs-title" role="presentation">
-				<a href="#menuSoftServe" role="tab">Soft-Serve</a>
-			</li>
-			<li class="tabs-title" role="presentation">
 				<a href="#menuDrinks" role="tab">Drinks</a>
 			</li>
 		</ul>
+		<button type="button" class="button" data-open="addItemModal">Add Item</button>
 	</div>
 
 	<div class="tabs-content" data-tabs-content="menu-tabs">
 
-		<!-- Appetizers Menu -->
-		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
-
-			<div class="flex-container ">
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>House Fries</h4>
-						<p>oh yum a tasty treat. Get it while its hot! </p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="1" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class=" card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Cheesey Fries</h4>
-						<p>More cheese! I said more cheeeeeeeeeeese!</p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="2" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Buffalo Wings</h4>
-						<p>Buffalos don't have wings</p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="3" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Chicken Nuggies</h4>
-						<p>Is it chicken or something else...</p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="4" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
+		<!-- Sandwich Menu -->
+		<div class="tabs-panel is-active" data-menu-items="sandwiches" id="menuSandwiches">
+			<div class="flex-container" id="adminSandwichItem">
+				<!-- Sandwich Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Burgers Menu -->
 		<div class="tabs-panel" data-menu-items="burgers" id="menuBurgers">
-
-			<div class="flex-container ">
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Bruschetta Bout It Burger</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="1" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>If Looks Could Kale Burger</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="2" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Summer Thyme Burger</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="3" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Hummus a Tune Burger</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="4" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="flex-container" id="adminBurgerItem">
+				<!-- Burgers Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Salads Menu -->
 		<div class="tabs-panel" data-menu-items="salads" id="menuSalads">
-			<div class="flex-container ">
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Peas and Thank You Salad</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="1" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Sweet Home Avocado Salad</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="2" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>The Garden of Eden Salad</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="3" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Hummus a Tune Burger</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="4" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Ice Cream Menu -->
-		<div class="tabs-panel" data-menu-items="icecream" id="menuSoftServe">
-			<div class="flex-container ">
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Strawberry</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="1" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Pistachio</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="2" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Chocolate</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="3" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Vanilla</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="4" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="flex-container" id="adminSaladItem">
+				<!-- Salads Items Added Jquery-->
 			</div>
 		</div>
 
 		<!-- Drinks Menu -->
 		<div class="tabs-panel" data-menu_items="drinks" id="menuDrinks">
-			<div class="flex-container ">
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Coca-Cola</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="1" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Milkshake</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="2" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Water</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="3" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="card" style="width: 300px;">
-					<div class="header cell-header card-section">
-						<h4>Orange Soda</h4>
-						<p></p>
-						<div class="card-divider flex-container footer">
-							<p class="align-left">Price: $$
-								<button type="button" class="button align-right" data-item-id="4" data-open="editItemModal">Edit
-									Item</button>
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="flex-container" id="adminDrinkItem">
+				<!-- Drink Items Added Jquery-->
 			</div>
 		</div>
 	</div>
 
 	<!-- Item Modal -->
 	<div class="reveal" id="editItemModal" data-reveal>
-
 		<form id="editMenuItemModal">
 			<label>
 				<h2>Item name:</h2>
-				<input type="text" required id="modal-item-menu">
+				<input type="text" required id="edit-item-menu">
+			</label>
+			<label>Category:
+				<input type="text" required id="edit-item-ctgy">
 			</label>
 			<label>Description:
-				<input type="text" required id="modal-item-desc">
+				<input type="text" required id="edit-item-desc">
 			</label>
 			<label>Item cost:
-				<input type="text" required id="modal-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
+				<input type="text" required id="edit-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
 			</label>
-
 			<div class="row flex-container">
 				<div class="input-group-button">
 					<button type="button" class="button large success" id="saveItem">Save</button>
@@ -387,11 +122,43 @@
 				</div>
 			</div>
 		</form>
-
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
+
+	<!-- Add Item Modal -->
+	<div class="reveal" id="addItemModal" data-reveal>
+		<form id="addMenuItemModal">
+			<label>
+				<h2>Item name:</h2>
+				<input type="text" required id="add-item-menu">
+			</label>
+			<label>Category:
+				<input type="text" required id="add-item-ctgy">
+			</label>
+			<label>Description:
+				<input type="text" required id="add-item-desc">
+			</label>
+			<label>Item cost:
+				<input type="text" required id="add-item-cost" pattern="/[0-9]{2}\.[0-9]{2}/">
+			</label>
+			<div class="row flex-container">
+				<div class="input-group-button">
+					<button type="button" class="button large success" id="saveItem">Save</button>
+				</div>
+				<!-- <div class="input-group-button">
+					<button type="button" class="button large alert" id="deleteItem">Delete</button>
+				</div> -->
+			</div>
+		</form>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+
+
 
 	<script>
 		$(document).ready(function () {

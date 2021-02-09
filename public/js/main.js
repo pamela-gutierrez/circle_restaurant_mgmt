@@ -1,6 +1,5 @@
 // from the main page we user should be able to:
 // login the admin
-// view the menu
 // add items to their order
 // remove items from their order
 // submit their order
@@ -41,8 +40,8 @@ $(document).ready(function () {
 
     // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
-
         $.post("/api/main", {
+
             username: username,
             password: password
         })
@@ -59,6 +58,7 @@ $(document).ready(function () {
     var updating = false;
 
     // UPDATE ORDER: gets the data from the order we are updating
+    // We need this to get the id that we'll pass to the get request below
     function getOrderData(id) {
         var orderData = {
 
@@ -75,12 +75,11 @@ $(document).ready(function () {
     function updateOrder(item) {
         $.ajax({
             method: "PUT",
-            url: "/api/admin/item/:id",
+            url: "/api/admin/item/:id"
         })
     }
 
-    // DELETE ITEM FROM ORDER
-    $(".delete-item").on("click", handleOrderItemDelete)
+
 
     // ADD ITEM TO ORDER
     $(".addItem").on("click", function (event) {
@@ -88,6 +87,14 @@ $(document).ready(function () {
         // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
     })
 
+    // Submit Order
+    //  function handleSubmitOrder (){
+
+    //  }
+
+
+    // DELETE ITEM FROM ORDER
+    $(".delete-item").on("click", handleOrderItemDelete)
 
     function handleOrderItemDelete() {
         $.ajax({
@@ -103,9 +110,52 @@ $(document).ready(function () {
             .data("item")
     }
 
-    // OrderCart
-    // needs name and cost
-
 })
 
+var renderMenu = () => {
+    return $.ajax({
+        url: "/api/admin/item",
+        type: "GET"
+    }).then((menu) => {
+        console.log(menu);
+        for (var i = 0; i < menu.length; i++) {
+            createNewCard(menu[i]);
+        }
+    })
+}
+
+// Prints cards onto main.html page
+function createNewCard(items) {
+    var newOrderCard = $("<div>").addClass("card").css("width", "300px");
+    var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
+    var itemName = $("<h4>").text(items.name + " ");
+    var itemDescription = $("<p>").text(items.description + " ");
+    var newFooter = $("<div>").addClass("card-divider flex-container footer");
+    var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
+    var addButton = $("<button>").addClass("button align-right").data("open", "editItemModal").text("Edit Item");
+    itemCost.append(addButton);
+    newFooter.append(itemCost)
+    newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
+    newOrderCard.append(newOrderCardHeading);
+    switch (items.category) {
+        case "Sandwiches":
+            $("#sandwichItem").append(newOrderCard);
+            break;
+        case "Burgers":
+            $("#burgerItem").append(newOrderCard);
+            break;
+        case "Salads":
+            $("#saladItem").append(newOrderCard);
+            break;
+        case "Drinks":
+            $("#drinkItem").append(newOrderCard);
+            break;
+        default:
+            console.log("invalid category")
+            break;
+    }
+}
+$(document).ready(function () {
+    renderMenu();
+});
 
