@@ -173,7 +173,7 @@
 //     //     })
 
 // API CALLS
-var sandwichItem = $("#sandwichItem");
+
 
 
 var renderMenu = () => {
@@ -182,38 +182,29 @@ var renderMenu = () => {
         type: "GET"
     }).then((menu) => {
         console.log(menu);
-        // sandwichItem.empty();
-        // var itemsAdd = [];
         for (var i = 0; i < menu.length; i++) {
-
-
             createNewCard(menu[i]);
-
-            // itemsAdd.push(createNewCard(items[i]));
         }
-        console.log(sandwichItem);
     })
 }
 
-function createNewCard(items) {            
-
-    var newOrderCard = $("<div>").addClass("card");
+function createNewCard(items) {
+    var newOrderCard = $("<div>").addClass("card").css("width","300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
     var itemName = $("<h4>").text(items.name + " ");
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    newFooter.append(itemCost);
+    var addButton = $("<button>").addClass("button float-right").data("open", "editItemModal").text("Edit Item");
+    itemCost.append(addButton);
+    newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
-    newOrderCard.append(newOrderCardHeading);   
-    sandwichItem.append(newOrderCard.innerHTML);
-
-    console.log(sandwichItem);
-
+    newOrderCard.append(newOrderCardHeading);
+    $("#sandwichItem").append(newOrderCard);
 }
 
 // ----- Event Listeners
-$(document).ready(function(){
+$(document).ready(function () {
     renderMenu();
 });
 
