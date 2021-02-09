@@ -189,7 +189,7 @@ var renderMenu = () => {
 }
 
 function createNewCard(items) {
-    var newOrderCard = $("<div>").addClass("card").css("width","300px");
+    var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
     var itemName = $("<h4>").text(items.name + " ");
     var itemDescription = $("<p>").text(items.description + " ");
@@ -206,5 +206,12 @@ function createNewCard(items) {
 // ----- Event Listeners
 $(document).ready(function () {
     renderMenu();
+
+
+    $("#saveNewItem").on('click', function (event) {
+        // event.preventDefault();
+        console.log("EVENT")
+        console.log(event);
+    });
 });
 
