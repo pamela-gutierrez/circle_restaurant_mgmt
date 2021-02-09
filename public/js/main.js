@@ -26,12 +26,11 @@ $(document).ready(function () {
             username: usernameInput.val().trim(),
             password: passwordInput.val().trim()
         };
-        console.log("user data");
-        console.log(userData);
         if (!userData.username || !userData.password) {
             return;
         }
         loginUser(userData.username, userData.password);
+
         usernameInput.val("");
         passwordInput.val("");
         // signUpUser(userData.username, userData.password);
@@ -42,6 +41,7 @@ $(document).ready(function () {
     // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
         $.get("/", {
+
             username: username,
             password: password
         })
