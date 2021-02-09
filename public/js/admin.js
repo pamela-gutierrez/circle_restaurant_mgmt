@@ -175,7 +175,6 @@
 // API CALLS
 
 
-
 var renderMenu = () => {
     return $.ajax({
         url: "/api/admin/item",
@@ -195,7 +194,7 @@ function createNewCard(items) {
     var itemDescription = $("<p>").text(items.description + " ");
     var newFooter = $("<div>").addClass("card-divider flex-container footer");
     var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button float-right").attr("data-open", "editItemModal").attr("data-id", items.id).text("Edit Item");
+    var addButton = $("<button>").addClass("editItem button float-right").attr("data-open", "editItemModal").attr("data-id", items.id).text("Edit Item");
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
@@ -243,13 +242,31 @@ function saveMenuItem(e) {
     });
 }
 
+function getSingleItem(e) {
+    e.preventDefault();
+    var currentMenuItemId = this.getAttribute("data-id");
+    console.log(currentMenuItemId);
+    $.ajax({
+        url: "/api/admin/item/" + currentMenuItemId,
+        type: "GET"
+    }).then(function(item) {
+        $("#edit-item-menu").val(item.name);
+        $("#edit-item-ctgy").val(item.category);
+        $("#edit-item-desc").val(item.description);
+        $("#edit-item-cost").val(item.cost);
+    })
+}
+
 // On ready
 $(document).ready(function () {
     renderMenu();
 
     // Grab html elements
     addForm = document.getElementById("addMenuItemModal");
-    // editItem = document.querySelectorAll
+    // editItem = document.querySelectorAll("editItem");
+    // console.log(editItem);
     // Event Listeners
     addForm.addEventListener('submit', saveMenuItem);
+    // editItem.addEventListener("click", getSingleItem);
+    $(document).on("click", "button.editItem", getSingleItem);
 });
