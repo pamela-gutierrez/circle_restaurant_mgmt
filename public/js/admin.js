@@ -210,7 +210,7 @@ $(document).ready(function () {
 
 
     $("#saveNewItem").on('click', function (event) {
-        // event.preventDefault();
+        event.preventDefault();
         console.log("EVENT")
         console.log(event);
     });
