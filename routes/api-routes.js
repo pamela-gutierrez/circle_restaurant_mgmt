@@ -157,7 +157,7 @@ module.exports = function (app) {
 
     // Seats: GET
     app.get("/api/seating", function (req, res) {
-        db.Seatings.findAll({}).then(function (dbItem) {
+        db.Seating.findAll({}).then(function (dbItem) {
             res.json(dbItem);
         })
     })

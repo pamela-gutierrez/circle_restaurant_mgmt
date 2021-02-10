@@ -53,9 +53,8 @@ $(document).ready(function () {
             })
     }
 
-    var orderId;
-    // sets a flag for whether or not we're updating a post to be false initially
-    var updating = false;
+
+
 
     // UPDATE ORDER: gets the data from the order we are updating
     // We need this to get the id that we'll pass to the get request below
@@ -64,26 +63,7 @@ $(document).ready(function () {
 
         }
     }
-    // $.get("/api/orders/" + id, function (data) {
-    //     if (data) {
-    //         nameInput.val(data.name);
-    //         updating = true;
-    //     }
-    // });
 
-
-    // function updateOrder(item) {
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/admin/item/:id"
-    //     })
-    // }
-
-    // ADD ITEM TO CART
-    // $(".addItem").on("click", function (event) {
-    //     event.preventDefault();
-    //     // THIS IS AN EDIT TO AN EXISTING ORDER. I need to grad the table order id and change the add another item to that order.
-    // })
 
     // function getOrderData(id) {
     //     $.get("/api/orders/" + id, function (data) {
@@ -94,10 +74,12 @@ $(document).ready(function () {
     // }
 
 
-    var addToCart = (id, data) => {
+    var addToCart = () => {
+        var currentMenuItemId = this.getAttribute("data-id")
+        var tableDropdownId = this.getAttribute()
         return $.ajax({
-            url: "/api/orders" + id,
-            type: "PUT",
+            url: "/api/orders/" + id,
+            type: "POST",
             data: data
         })
     }
@@ -107,7 +89,7 @@ $(document).ready(function () {
     // WHERE Orders.tableId = ?
 
 
-    // When the add button is clicked, we want to to add item to cart and also grab the item id and 
+    // When the add button is clicked we can go and get the current table
 
 
     $(document).on("click", "button.addItem", event => {
@@ -186,7 +168,7 @@ function createNewCard(items) {
 }
 
 var renderSeating = () => {
-    return $.ajax({
+    $.ajax({
         url: "/api/seating",
         type: "GET"
     }).then((seats) => {
@@ -202,7 +184,7 @@ var renderSeating = () => {
         }
         seatingLabel.append(seatingSelect);
         seatingLi.append(seatingLabel);
-        $("#seatingDropdown").append(seatingLi);
+        $("#seatingDropdown").prepend(seatingLi);
 
     })
 }
@@ -212,5 +194,10 @@ var renderSeating = () => {
 
 $(document).ready(function () {
     renderMenu();
+    renderSeating();
+
+    // Event Listeners
+    $(document).on("click", "button.addItem", addToCart);
+
 });
 
