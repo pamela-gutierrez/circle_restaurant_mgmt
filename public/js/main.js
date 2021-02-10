@@ -15,12 +15,7 @@ $(document).ready(function () {
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
 
-    // $(document).on("click", "button.editOrder", handleEditOrder);
-    // $(document).on("submit", "button.submitOrder", handleSubmitOrder);
-
-
     // ADMIN LOGIN
-    var loginAdmin = $("form.modalLogin")
     loginAdmin.on("submit", function (event) {
         event.preventDefault();
         var userData = {
@@ -34,12 +29,8 @@ $(document).ready(function () {
 
         usernameInput.val("");
         passwordInput.val("");
-        // signUpUser(userData.username, userData.password);
-        // usernameInput.val("");
-        // passwordInput.val("");
     });
 
-    // not sure if we need this... the html routes might already link to admin
     function loginUser(username, password) {
         $.post("/api/main", {
 
@@ -54,46 +45,28 @@ $(document).ready(function () {
             })
     }
 
-
-    // function updateTable() {
-    // var tableDropdownId = $("option#order-table").val();  
-    // console.log(tableDropdownId);
-    // //   $.ajax({
-    // //     type: GET
-    // //   }  
-    // }
-    // updateTable()
-
-
-    // SELECT * FROM ItemOrders
-    // LEFT JOIN Orders
-    // WHERE Orders.tableId = ?
-
-
     // When the add button is clicked we can go and get the current table
+    // $(document).on("click", "button.addItem", event => {
+    //     event.preventDefault();
 
+    // })
 
-    $(document).on("click", "button.addItem", event => {
-        event.preventDefault();
+    // // DELETE ITEM FROM ORDER
+    // $(".delete-item").on("click", handleOrderItemDelete)
 
-    })
-
-    // DELETE ITEM FROM ORDER
-    $(".delete-item").on("click", handleOrderItemDelete)
-
-    function handleOrderItemDelete() {
-        $.ajax({
-            method: "DELETE",
-            url: "/api/main/menu/" + id
-        }).then(function () {
-            console.log("deleted order", id);
-            location.reload();
-        })
-        var currentItem = $(this)
-            .parent()
-            .parent()
-            .data("item")
-    }
+    // function handleOrderItemDelete() {
+    //     $.ajax({
+    //         method: "DELETE",
+    //         url: "/api/main/menu/" + id
+    //     }).then(function () {
+    //         console.log("deleted order", id);
+    //         location.reload();
+    //     })
+    //     var currentItem = $(this)
+    //         .parent()
+    //         .parent()
+    //         .data("item")
+    // }
 })
 
 // ---------------- Renders Menu Item's By Category Onto Page ------------------- //
@@ -143,8 +116,8 @@ function createNewCard(items) {
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
     switch (items.category) {
-        case "Sandwiches":
-            $("#sandwichItem").append(newOrderCard);
+        case "Appetizers":
+            $("#appetizerItem").append(newOrderCard);
             break;
         case "Burgers":
             $("#burgerItem").append(newOrderCard);
@@ -201,7 +174,7 @@ function addToCart() {
 
 function renderCart() {
     var seatingIdToRender = $("#order-table").find(":selected").val();
-    console.log(seatingIdToRender);
+    // console.log(seatingIdToRender);
     $("#activeOrders-container").empty();
     if (seatingIdToRender == "Select a table:") {
         $(".cartItem").text("Invalid seating table");
@@ -212,7 +185,7 @@ function renderCart() {
             type: "GET"
         }).then(function (data) {
             data.forEach(element => {
-                var newRow = $("<tr>");
+                var newRow = $("<tr>").addClass("cart-item").attr("data-order-id", element.id);
                 var nameTd = $("<td>").text(element.Item.name);
                 var qtyTd = $("<td>").text(element.item_quantity);
                 var costTd = $("<td>").text(element.Item.cost);
@@ -225,6 +198,15 @@ function renderCart() {
     }
 }
 
+function submitOrder() {
+    // var cartItems = document.querySelectorAll(".cart-item");
+    console.log("WE ARE HERE");
+
+    // $.ajax({
+    //     url: "api/"
+    // })
+}
+
 $(document).ready(function () {
     // Initialize webpage
     renderMenu();
@@ -233,5 +215,8 @@ $(document).ready(function () {
     // Event Listeners
     $(document).on("click", "button.addItem", addToCart);
     $(document).on("click", "button.viewCart", renderCart);
+    var submitOrderMain = $("form.submitOrderForm");
+    submitOrderMain.on("submit", submitOrder);
+    // $(document).on("submit", "form.submitOrderForm", submitOrder);
 });
 

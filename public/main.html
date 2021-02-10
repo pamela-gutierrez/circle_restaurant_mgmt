@@ -55,7 +55,7 @@
 	<div class="flex-container">
 		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="menu-tabs">
 			<li class="tabs-title is-active" role="presentation">
-				<a href="#menuSandwiches" role="tab">Sandwiches</a>
+				<a href="#menuAppetizers" role="tab">Appetizers</a>
 			</li>
 			<li class="tabs-title" role="presentation">
 				<a href="#menuBurgers" role="tab">Burgers</a>
@@ -71,10 +71,10 @@
 
 	<div class="tabs-content menuItem-container" data-tabs-content="menu-tabs">
 
-		<!-- Sandwich Menu -->
-		<div class="tabs-panel is-active" data-menu-items="sandwiches" id="menuSandwiches">
-			<div class="flex-container" id="sandwichItem">
-				<!-- Sandwich Items Added Jquery-->
+		<!-- Appetizers Menu -->
+		<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
+			<div class="flex-container" id="appetizerItem">
+				<!-- Appetizers Items Added Jquery-->
 			</div>
 		</div>
 
@@ -126,34 +126,31 @@
 	</div>
 
 	<!-- Cart Modal -->
-	<!-- <div class="reveal" id="modalCart" data-reveal> -->
 	<div class="off-canvas position-right" id="modalCart" data-off-canvas>
 		<h2>Your Order</h2>
 		<p class="lead">Buy it now! or don't, I'm not your boss</p>
-		<!-- <table class="stack"> -->
-		<table>
-			<thead>
-				<tr>
-					<th>Item</th>
-					<th>Quantity</th>
-					<th>Price</th>
-				</tr>
-			</thead>
-			<tbody id="activeOrders-container">
-				<td class="cartItem"></td>
-				<td class="cartItemQuantity"></td>
-				<td class="cartItemPrice"></td>
-			</tbody>
-			<tfoot>
-				<tr class="totalAmount">
-					<td>Total: $</td>
-					<td class="cartTotal"></td>
-				</tr>
-			</tfoot>
-		</table>
-		<div class="input-group-button">
-			<input type="submit" class="button large expanded submitOrder" value="Place Order">
-		</div>
+		<form class="submitOrderForm">
+			<table>
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>Quantity</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody id="activeOrders-container">
+				</tbody>
+				<tfoot>
+					<tr class="totalAmount">
+						<td>Total: $</td>
+						<td class="cartTotal"></td>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="input-group-button">
+				<input type="button" class="button large expanded submitOrderButton" value="Place Order">
+			</div>
+		</form>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
