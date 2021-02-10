@@ -74,7 +74,7 @@ $(document).ready(function () {
     // }
 
 
-    var addToCart = () => {
+    addToCart = () => {
         var currentMenuItemId = this.getAttribute("data-id")
         var tableDropdownId = this.getAttribute()
         return $.ajax({
@@ -128,7 +128,6 @@ var renderMenu = () => {
         url: "/api/admin/item",
         type: "GET"
     }).then((menu) => {
-        console.log(menu);
         for (var i = 0; i < menu.length; i++) {
             createNewCard(menu[i]);
         }
@@ -172,21 +171,19 @@ var renderSeating = () => {
         url: "/api/seating",
         type: "GET"
     }).then((seats) => {
-        console.log(seats);
         var seatingLi = $("<li>");
         var seatingLabel = $("<label>");
         var seatingSelect = $("<select>").attr("id", "order-table");
-        var seatingOption = $("<option>").attr("value", null).attr("disabled").attr("selected").text("Select a table: ");
+        var seatingOption = $("<option>").attr("value", null).attr("disabled", true).attr("selected", true).text("Select a table: ");
         seatingSelect.append(seatingOption);
         for (var i = 0; i < seats.length; i++) {
-            var seatingOptions = $("<option>").attr("value", i + 1).text("Table #" + i + 1);
+            var seatingOptions = $("<option>").attr("value", i + 1).text("Table #" + (i + 1));
             seatingSelect.append(seatingOptions);
         }
         seatingLabel.append(seatingSelect);
         seatingLi.append(seatingLabel);
         $("#seatingDropdown").prepend(seatingLi);
-
-    })
+    });
 }
 
 
