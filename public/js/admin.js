@@ -229,13 +229,14 @@ function saveMenuItem(e) {
     if (!nameInput.val().trim() || !categoryInput.val().trim() || !descriptionInput.val().trim() || !costInput.val().trim()) {
         console.log("INVALID PARAMETERS");
         return;
+    } else {
+        var newMenuItem = {
+            name: nameInput.val().trim(),
+            category: categoryInput.val().trim(),
+            description: descriptionInput.val().trim(),
+            cost: costInput.val().trim()
+        };
     }
-    var newMenuItem = {
-        name: nameInput.val().trim(),
-        category: categoryInput.val().trim(),
-        description: descriptionInput.val().trim(),
-        cost: costInput.val().trim()
-    };
 
     $.post("/api/admin/item", newMenuItem, function () {
         window.location.href = "/admin";
@@ -283,21 +284,19 @@ function deleteMenuItem(e) {
     $.ajax({
         method: "DELETE",
         url: "/api/admin/item/" + currentMenuItemId
-    }).then(function() {
-        window.location.href= "/admin";
+    }).then(function () {
+        window.location.href = "/admin";
     })
 }
 
 function getSingleItem(e) {
     e.preventDefault();
     var currentMenuItemId = this.getAttribute("data-id");
-    console.log(currentMenuItemId);
     $.ajax({
         url: "/api/admin/item/" + currentMenuItemId,
         type: "GET"
     }).then(function (item) {
         $("#edit-item-menu").val(item.name).attr("data-name", item.name);
-        // $("#edit-item-menu").attr("data-id", currentMenuItemId);
         $("#edit-item-ctgy").val(item.category).attr("data-ctgy", item.category);
         $("#edit-item-desc").val(item.description).attr("data-desc", item.description);
         $("#edit-item-cost").val(item.cost).attr("data-cost", item.cost);
@@ -312,12 +311,9 @@ $(document).ready(function () {
 
     // Grab html elements
     addForm = document.getElementById("addMenuItemModal");
-    // editItem = document.querySelectorAll("editItem");
-    // console.log(editItem);
 
     // Event Listeners
     addForm.addEventListener('submit', saveMenuItem);
-    // editItem.addEventListener("click", getSingleItem);
     $(document).on("click", "button.editItem", getSingleItem);
     $(document).on("click", "button#saveItem", updateMenuItem);
     $(document).on("click", "button#deleteItem", deleteMenuItem);
