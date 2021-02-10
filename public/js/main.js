@@ -55,15 +55,15 @@ $(document).ready(function () {
     }
 
 
-    function updateTable() {
-    var tableDropdownId = $("option#order-table").val();  
-    console.log(tableDropdownId);
-    //   $.ajax({
-    //     type: GET
-    //   }  
-    }
-    updateTable()
-    
+    // function updateTable() {
+    // var tableDropdownId = $("option#order-table").val();  
+    // console.log(tableDropdownId);
+    // //   $.ajax({
+    // //     type: GET
+    // //   }  
+    // }
+    // updateTable()
+
 
     // addToCart = () => {
     //     var currentMenuItemId = $("data-id").val();
@@ -182,14 +182,14 @@ var renderSeating = () => {
 function updateTable() {
     var tableDropdownId = $("#order-table").find(":selected").val();
     console.log(tableDropdownId);
-      $.ajax({
+    $.ajax({
         url: "/api/seating/" + tableDropdownId,
         type: "PUT"
         // data: {occupied: true}
-      }).then(function() {
-          console.log(updatedTable);
-      })
-    }
+    }).then(function () {
+        //   console.log();
+    })
+}
 
 
 $(document).ready(function () {
