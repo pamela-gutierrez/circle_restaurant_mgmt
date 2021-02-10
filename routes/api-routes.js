@@ -155,8 +155,12 @@ module.exports = function (app) {
             });
     });
 
-    // Seats: PUT, update a seat to be occupied, /api/seats/:id
+    // Seats: GET
+    app.get("/api/seating", function (req, res) {
+        db.Seatings.findAll({}).then(function (dbItem) {
+            res.json(dbItem);
+        })
+    })
 
-    // Seats: POST, /api/orders/seating/:id
 };
 
