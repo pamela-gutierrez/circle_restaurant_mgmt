@@ -51,7 +51,7 @@ module.exports = function (app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function (req, res) {
-        console.log("WE ARE HERE api-routes.js");
+        
         db.Items.update({
             name: req.body.name,
             category: req.body.category,
@@ -97,12 +97,13 @@ module.exports = function (app) {
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {
+        console.log(req.body.itemId);
         db.Orders.create({
-            seating_id: req.body.seating_id,
-            item_id: req.body.item_id,
-            item_quantity: req.body.item_quantity,
-            complete: req.body.complete,
-            submitted: req.body.submitted
+            SeatingId: req.body.seatingId,
+            ItemId: req.body.itemId,
+            item_quantity: 1
+            // complete: false,
+            // submitted: false
         }).then(function (dbItem) {
             res.json(dbItem)
         });

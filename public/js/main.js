@@ -65,18 +65,6 @@ $(document).ready(function () {
     // updateTable()
 
 
-    // addToCart = () => {
-    //     var currentMenuItemId = $("data-id").val();
-    //     var tableDropdownId = $("option#order-table").val();
-    //     console.log(currentMenuItemId);
-
-    //     return $.ajax({
-    //         url: "/api/orders/" + id,
-    //         type: "POST",
-    //         data: data
-    //     })
-    // }
-
     // SELECT * FROM ItemOrders
     // LEFT JOIN Orders
     // WHERE Orders.tableId = ?
@@ -115,7 +103,7 @@ $(document).ready(function () {
     }
 })
 
-// ------------------------------------ Renders Menu Item's By Category Onto Page -------------------------------- //
+// ---------------- Renders Menu Item's By Category Onto Page ------------------- //
 var renderMenu = () => {
     return $.ajax({
         url: "/api/admin/item",
@@ -125,6 +113,27 @@ var renderMenu = () => {
             createNewCard(menu[i]);
         }
     })
+}
+
+// Render table selection dropdown
+var renderSeating = () => {
+    $.ajax({
+        url: "/api/seating",
+        type: "GET"
+    }).then((seats) => {
+        var seatingLi = $("<li>");
+        var seatingLabel = $("<label>");
+        var seatingSelect = $("<select>").attr("id", "order-table");
+        var seatingOption = $("<option>").attr("value", null).attr("disabled", true).attr("selected", true).text("Select a table: ");
+        seatingSelect.append(seatingOption);
+        for (var i = 0; i < seats.length; i++) {
+            var seatingOptions = $("<option>").attr("value", i + 1).text("Table #" + (i + 1));
+            seatingSelect.append(seatingOptions);
+        }
+        seatingLabel.append(seatingSelect);
+        seatingLi.append(seatingLabel);
+        $("#seatingDropdown").prepend(seatingLi);
+    });
 }
 
 // Prints cards onto main.html page
@@ -159,45 +168,52 @@ function createNewCard(items) {
     }
 }
 
-var renderSeating = () => {
-    $.ajax({
-        url: "/api/seating",
-        type: "GET"
-    }).then((seats) => {
-        var seatingLi = $("<li>");
-        var seatingLabel = $("<label>");
-        var seatingSelect = $("<select>").attr("id", "order-table");
-        var seatingOption = $("<option>").attr("value", null).attr("disabled", true).attr("selected", true).text("Select a table: ");
-        seatingSelect.append(seatingOption);
-        for (var i = 0; i < seats.length; i++) {
-            var seatingOptions = $("<option>").attr("value", i + 1).text("Table #" + (i + 1));
-            seatingSelect.append(seatingOptions);
-        }
-        seatingLabel.append(seatingSelect);
-        seatingLi.append(seatingLabel);
-        $("#seatingDropdown").prepend(seatingLi);
-    });
-}
-
 function updateTable() {
     var tableDropdownId = $("#order-table").find(":selected").val();
     console.log(tableDropdownId);
     $.ajax({
         url: "/api/seating/" + tableDropdownId,
         type: "PUT"
-        // data: {occupied: true}
     }).then(function () {
         //   console.log();
     })
+    return tableDropdownId;
 }
 
+function addToCart() {
+    var currentMenuItemId = this.getAttribute("data-id");
+    var tableDropdownId = updateTable();
+
+    if (tableDropdownId == "Select a table:") {
+        alert("Invalid table. Please select a table.");
+        return;
+    } else {
+        var data = {
+            itemId: currentMenuItemId,
+            seatingId: tableDropdownId
+        }
+        console.log(data);
+        $.ajax({
+            url: "/api/orders",
+            type: "POST",
+            data: data
+        }).then(function (err) {
+            if (err) throw err;
+        })
+    }
+
+
+
+}
 
 $(document).ready(function () {
+    // Initialize webpage
     renderMenu();
     renderSeating();
+
     // Event Listeners
-    // $(document).on("click", "button.addItem", addToCart);
-    $(document).on("click", "#order-table", updateTable);
+    // $(document).on("click", "#order-table", updateTable);
+    $(document).on("click", "button.addItem", addToCart);
 
 });
 
