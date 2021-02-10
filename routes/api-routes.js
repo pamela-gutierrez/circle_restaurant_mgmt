@@ -51,7 +51,7 @@ module.exports = function (app) {
 
     // Item(Admin):PUT, update a menu item
     app.put("/api/admin/item/:id", function (req, res) {
-        
+
         db.Items.update({
             name: req.body.name,
             category: req.body.category,
@@ -94,6 +94,28 @@ module.exports = function (app) {
             res.json(dbItem)
         });
     });
+
+    // Orders(User):GET, get order cart
+    app.get("/api/orders/seating/:id", function (req, res) {
+        console.log("I HATE YOU");
+        db.Orders.findAll({
+            where: {
+                SeatingId: req.params.id
+            },
+            include: [
+                {
+                    model: Items,
+                    where: {
+                        // Items.id: TtemId
+                    },
+                    required: false
+                }
+            ]
+        }).then(function (dbItem) {
+
+            res.json(dbItem);
+        })
+    })
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {

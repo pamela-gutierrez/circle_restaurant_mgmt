@@ -78,13 +78,6 @@ $(document).ready(function () {
 
     })
 
-    // Renders Added Item's Into Order Modal
-    function renderOrderModal() {
-        $("#cartItem").val();
-        $("#cartItemPrice").val();
-
-    }
-
     // DELETE ITEM FROM ORDER
     $(".delete-item").on("click", handleOrderItemDelete)
 
@@ -206,14 +199,34 @@ function addToCart() {
 
 }
 
+function renderCart() {
+    var seatingIdToRender = $("#order-table").find(":selected").val();
+    console.log(seatingIdToRender);
+    $("#activeOrders-container").empty();
+    if (seatingIdToRender == "Select a table:") {
+        $(".cartItem").text("Invalid seating table");
+    } else {
+        $.ajax({
+            url: "/api/orders/seating/" + seatingIdToRender,
+            type: "GET"
+        }).then(function (data) {
+ 
+            // console.log("I HATE YOU TOO");
+            // data.forEach(element => {
+            //     console.log(element);
+            // });
+
+        })
+    }
+}
+
 $(document).ready(function () {
     // Initialize webpage
     renderMenu();
     renderSeating();
 
     // Event Listeners
-    // $(document).on("click", "#order-table", updateTable);
     $(document).on("click", "button.addItem", addToCart);
-
+    $(document).on("click", "button.viewCart", renderCart);
 });
 
