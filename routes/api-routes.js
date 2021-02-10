@@ -97,7 +97,7 @@ module.exports = function (app) {
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {
-        db.Items.create({
+        db.Orders.create({
             seating_id: req.body.seating_id,
             item_id: req.body.item_id,
             item_quantity: req.body.item_quantity,
@@ -162,7 +162,20 @@ module.exports = function (app) {
         }).then(function (dbItem) {
             res.json(dbItem);
         })
-    })
+    });
+
+    // Table updates to occupied
+    app.put("/api/seating/:id", function (req, res) {
+        db.Seating.update({
+            occupied: true
+        },{
+            where: {
+                id: req.params.id
+                }
+            }).then(function (dbItem) {
+                res.json(dbItem)
+            });
+    });
 
 };
 

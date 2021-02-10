@@ -20,6 +20,7 @@ $(document).ready(function () {
 
 
     // ADMIN LOGIN
+    var loginAdmin = $("form.modalLogin")
     loginAdmin.on("submit", function (event) {
         event.preventDefault();
         var userData = {
@@ -54,35 +55,27 @@ $(document).ready(function () {
     }
 
 
-
-
-    // UPDATE ORDER: gets the data from the order we are updating
-    // We need this to get the id that we'll pass to the get request below
-    function getOrderData(id) {
-        var orderData = {
-
-        }
+    function updateTable() {
+    var tableDropdownId = $("option#order-table").val();  
+    console.log(tableDropdownId);
+    //   $.ajax({
+    //     type: GET
+    //   }  
     }
+    updateTable()
+    
 
+    // addToCart = () => {
+    //     var currentMenuItemId = $("data-id").val();
+    //     var tableDropdownId = $("option#order-table").val();
+    //     console.log(currentMenuItemId);
 
-    // function getOrderData(id) {
-    //     $.get("/api/orders/" + id, function (data) {
-    //         if (data) {
-
-    //         }
+    //     return $.ajax({
+    //         url: "/api/orders/" + id,
+    //         type: "POST",
+    //         data: data
     //     })
     // }
-
-
-    addToCart = () => {
-        var currentMenuItemId = this.getAttribute("data-id")
-        var tableDropdownId = this.getAttribute()
-        return $.ajax({
-            url: "/api/orders/" + id,
-            type: "POST",
-            data: data
-        })
-    }
 
     // SELECT * FROM ItemOrders
     // LEFT JOIN Orders
@@ -186,15 +179,25 @@ var renderSeating = () => {
     });
 }
 
-
+function updateTable() {
+    var tableDropdownId = $("#order-table").find(":selected").val();
+    console.log(tableDropdownId);
+      $.ajax({
+        url: "/api/seating/" + tableDropdownId,
+        type: "PUT"
+        // data: {occupied: true}
+      }).then(function() {
+          console.log(updatedTable);
+      })
+    }
 
 
 $(document).ready(function () {
     renderMenu();
     renderSeating();
-
     // Event Listeners
-    $(document).on("click", "button.addItem", addToCart);
+    // $(document).on("click", "button.addItem", addToCart);
+    $(document).on("click", "#order-table", updateTable);
 
 });
 
