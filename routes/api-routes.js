@@ -104,15 +104,12 @@ module.exports = function (app) {
             },
             include: [
                 {
-                    model: Items,
-                    where: {
-                        // Items.id: TtemId
-                    },
+                    model: db.Items,
                     required: false
                 }
             ]
         }).then(function (dbItem) {
-
+            console.log(dbItem);
             res.json(dbItem);
         })
     })
