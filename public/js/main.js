@@ -210,11 +210,9 @@ function renderCart() {
             url: "/api/orders/seating/" + seatingIdToRender,
             type: "GET"
         }).then(function (data) {
- 
-            // console.log("I HATE YOU TOO");
-            // data.forEach(element => {
-            //     console.log(element);
-            // });
+            data.forEach(element => {
+                console.log(element);
+            });
 
         })
     }
