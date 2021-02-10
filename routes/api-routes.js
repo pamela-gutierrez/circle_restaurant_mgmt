@@ -168,13 +168,13 @@ module.exports = function (app) {
     app.put("/api/seating/:id", function (req, res) {
         db.Seating.update({
             occupied: true
-        },{
+        }, {
             where: {
                 id: req.params.id
-                }
-            }).then(function (dbItem) {
-                res.json(dbItem)
-            });
+            }
+        }).then(function (dbItem) {
+            res.json(dbItem)
+        });
     });
 
 };
