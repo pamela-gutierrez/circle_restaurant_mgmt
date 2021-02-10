@@ -102,6 +102,14 @@ $(document).ready(function () {
         })
     }
 
+    // SELECT * FROM ItemOrders
+    // LEFT JOIN Orders
+    // WHERE Orders.tableId = ?
+
+
+    // When the add button is clicked, we want to to add item to cart and also grab the item id and 
+
+
     $(document).on("click", "button.addItem", event => {
         event.preventDefault();
 
@@ -111,13 +119,8 @@ $(document).ready(function () {
     function renderOrderModal() {
         $("#cartItem").val();
         $("#cartItemPrice").val();
-        
+
     }
-    // Submit Order
-    //  function handleSubmitOrder (){
-
-    //  }
-
 
     // DELETE ITEM FROM ORDER
     $(".delete-item").on("click", handleOrderItemDelete)
@@ -136,13 +139,6 @@ $(document).ready(function () {
             .data("item")
     }
 })
-
-
-
-
-
-
-
 
 // ------------------------------------ Renders Menu Item's By Category Onto Page -------------------------------- //
 var renderMenu = () => {
@@ -188,6 +184,32 @@ function createNewCard(items) {
             break;
     }
 }
+
+var renderSeating = () => {
+    return $.ajax({
+        url: "/api/seating",
+        type: "GET"
+    }).then((seats) => {
+        console.log(seats);
+        var seatingLi = $("<li>");
+        var seatingLabel = $("<label>");
+        var seatingSelect = $("<select>").attr("id", "order-table");
+        var seatingOption = $("<option>").attr("value", null).attr("disabled").attr("selected").text("Select a table: ");
+        seatingSelect.append(seatingOption);
+        for (var i = 0; i < seats.length; i++) {
+            var seatingOptions = $("<option>").attr("value", i + 1).text("Table #" + i + 1);
+            seatingSelect.append(seatingOptions);
+        }
+        seatingLabel.append(seatingSelect);
+        seatingLi.append(seatingLabel);
+        $("#seatingDropdown").append(seatingLi);
+
+    })
+}
+
+
+
+
 $(document).ready(function () {
     renderMenu();
 });

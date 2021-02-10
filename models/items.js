@@ -34,12 +34,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Items.associate = function(models) {
-        models.Items.hasMany(models.ItemOrders, {
+    Items.associate = function (models) {
+        models.Items.hasMany(models.Orders, {
         });
-        
+
     }
-    
+
     return Items;
 };
 
