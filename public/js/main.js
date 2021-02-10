@@ -206,14 +206,21 @@ function renderCart() {
     if (seatingIdToRender == "Select a table:") {
         $(".cartItem").text("Invalid seating table");
     } else {
+        var totalSum = 0;
         $.ajax({
             url: "/api/orders/seating/" + seatingIdToRender,
             type: "GET"
         }).then(function (data) {
             data.forEach(element => {
-                console.log(element);
+                var newRow = $("<tr>");
+                var nameTd = $("<td>").text(element.Item.name);
+                var qtyTd = $("<td>").text(element.item_quantity);
+                var costTd = $("<td>").text(element.Item.cost);
+                newRow.append(nameTd, qtyTd, costTd);
+                $("#activeOrders-container").append(newRow);
+                totalSum += parseInt(element.Item.cost);
             });
-
+            $(".cartTotal").text(totalSum);
         })
     }
 }
