@@ -13,17 +13,17 @@ var renderMenu = () => {
 function createNewCard(items) {
     var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
-    var itemName = $("<h4>").text(items.name);
-    var itemDescription = $("<p>").text(items.description);
+    var itemName = $("<h4>").text(items.name).addClass("itemN");
+    var itemDescription = $("<p>").text(items.description).addClass("itemD");
     var newFooter = $("<div>").addClass("card-divider flex-container footer align-right");
-    var itemCost = $("<p>").text("$" + items.cost + " ");
+    var itemCost = $("<p>").text("$" + items.cost + " ").addClass("itemC");
     var addButton = $("<button>").addClass("editItem button").attr("data-open", "editItemModal").attr("data-id", items.id).text("Edit Item");
-    
+
     itemCost.append(addButton);
     newFooter.append(itemCost)
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
-    
+
     switch (items.category) {
         case "Appetizers":
             $("#adminAppetizerItem").append(newOrderCard);

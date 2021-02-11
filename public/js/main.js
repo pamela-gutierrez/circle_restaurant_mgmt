@@ -76,12 +76,12 @@ var renderSeating = () => {
 function createNewCard(items) {
     var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
-    var itemName = $("<h4>").text(items.name + " ");
-    var itemDescription = $("<p>").text(items.description + " ");
+    var itemName = $("<h3>").text(items.name + " ").addClass("itemN");
+    var itemDescription = $("<p>").text(items.description + " ").addClass("itemD");
     var newFooter = $("<div>").addClass("card-divider flex-container footer align-right");
-    var itemCost = $("<p>").text("$" + items.cost + " ");
+    var itemCost = $("<p>").text("$" + items.cost + " ").addClass("itemC");
     var addButton = $("<button>").addClass("button addItem").attr("data-id", items.id).text("Add Item");
-    
+
     itemCost.append(addButton);
     newFooter.append(itemCost); //.append(addButton);
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
@@ -193,7 +193,7 @@ function submitOrder() {
             type: "PUT",
         }).then(function (data) {
             console.log(data);
-            
+
         })
     });
     alert("Your Order Has Been Submitted!");
