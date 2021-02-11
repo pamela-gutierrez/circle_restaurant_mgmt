@@ -27,6 +27,9 @@ To install dependencies run the following command:
 ```
 npm install
 ```
+admin credentials: 
+username: admin
+password: password
 
 -----------------------
 ## Usage
@@ -64,7 +67,7 @@ Orders.associate = function (models) {
 };
 ```
 
-<!-- [Add comments here] -->
+We have several routes for items, orders, and seating. The items and seating routes are used to give the user and admin both functionality with adding orders, editing and deleting orders. The seating routes are used for displaying the orders and keeping track of customers.
 
 ```javascript
 app.get("/api/orders/seating/:id", function (req, res) {
@@ -122,9 +125,9 @@ Created by Hudson Barnes, Pamela Gutierrez, Michael Medina, Muhammad A Khalid
 
 If you have any questions you can reach us at the following: 
 
-| | | | |
-|-|-|-|-|
-| Hudson Barnes  | [hudsonmbarnes@gmail.com](mailto:hudsonmbarnes@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/hudson-barnes-398483151/) | [GitHub](https://github.com/hudsonmbarnes)  |
-| Pamela Gutierrez  | [gtrz.pamela@gmail.com](mailto:gtrz.pamela@gmail.com)  |[LinkedIn](http://www.linkedin.com/in/pamela-gutierrez) | [GitHub](https://github.com/pamela-gutierrez)  |
-| Michael Medina  | [michaelanthony.medinaa@gmail.com](mailto:michaelanthony.medinaa@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/michaelanthonyy/) | [GitHub](https://github.com/michaelanthonyyy)  |
-| Muhammad A Khalid  | [akhalid.code@gmail.com](mailto:akhalid.code@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/abdullahkhalid/) | [GitHub](https://github.com/akhalid88/)  |
+|                   |                                                                             |                                                                  |                                               |
+| ----------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------- |
+| Hudson Barnes     | [hudsonmbarnes@gmail.com](mailto:hudsonmbarnes@gmail.com)                   | [LinkedIn](https://www.linkedin.com/in/hudson-barnes-398483151/) | [GitHub](https://github.com/hudsonmbarnes)    |
+| Pamela Gutierrez  | [gtrz.pamela@gmail.com](mailto:gtrz.pamela@gmail.com)                       | [LinkedIn](http://www.linkedin.com/in/pamela-gutierrez)          | [GitHub](https://github.com/pamela-gutierrez) |
+| Michael Medina    | [michaelanthony.medinaa@gmail.com](mailto:michaelanthony.medinaa@gmail.com) | [LinkedIn](https://www.linkedin.com/in/michaelanthonyy/)         | [GitHub](https://github.com/michaelanthonyyy) |
+| Muhammad A Khalid | [akhalid.code@gmail.com](mailto:akhalid.code@gmail.com)                     | [LinkedIn](https://www.linkedin.com/in/abdullahkhalid/)          | [GitHub](https://github.com/akhalid88/)       |
