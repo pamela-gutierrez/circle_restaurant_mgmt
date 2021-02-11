@@ -1,16 +1,21 @@
-// from the main page we user should be able to:
-// login the admin
-// add items to their order
-// remove items from their order
-// submit their order
-
-
 $(document).ready(function () {
-    // --------------------------ADMIN LOGIN--------------------------------
-    // Pointers to HTML tags/classes/ids
-    var menuItemContainer = $(".menuItem-container");
-    var activeOrders = $("#activeOrders-container");
+    // Renders Menu Item
+    renderMenu();
 
+    // Render Dropdown list of Table options in NavBar
+    renderSeating();
+
+    // On "click" functions to Add Item's to Cart, View Cart, and Submit Order
+    $(document).on("click", "button.addItem", addToCart);
+    $(document).on("click", "button.viewCart", renderCart);
+    var submitOrderButton = $(".submitOrderButton");
+    submitOrderButton.on("click", function () {
+        console.log("hello");
+        submitOrder();
+    })
+
+
+    // Pointers to HTML tags/classes/ids
     var loginAdmin = $("form.modalLogin");
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
@@ -44,44 +49,9 @@ $(document).ready(function () {
                 console.log(err);
             })
     }
-
-    // When the add button is clicked we can go and get the current table
-    // $(document).on("click", "button.addItem", event => {
-    //     event.preventDefault();
-
-    // })
-
-    // // DELETE ITEM FROM ORDER
-    // $(".delete-item").on("click", handleOrderItemDelete)
-
-    // function handleOrderItemDelete() {
-    //     $.ajax({
-    //         method: "DELETE",
-    //         url: "/api/main/menu/" + id
-    //     }).then(function () {
-    //         console.log("deleted order", id);
-    //         location.reload();
-    //     })
-    //     var currentItem = $(this)
-    //         .parent()
-    //         .parent()
-    //         .data("item")
-    // }
 })
 
-// ---------------- Renders Menu Item's By Category Onto Page ------------------- //
-var renderMenu = () => {
-    return $.ajax({
-        url: "/api/admin/item",
-        type: "GET"
-    }).then((menu) => {
-        for (var i = 0; i < menu.length; i++) {
-            createNewCard(menu[i]);
-        }
-    })
-}
-
-// Render table selection dropdown
+// Dynamically creates table selection dropdown list
 var renderSeating = () => {
     $.ajax({
         url: "/api/seating",
@@ -102,7 +72,7 @@ var renderSeating = () => {
     });
 }
 
-// Prints cards onto main.html page
+// Dynamically appends menu item cards onto main.html by Item Category
 function createNewCard(items) {
     var newOrderCard = $("<div>").addClass("card").css("width", "300px");
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
@@ -134,9 +104,21 @@ function createNewCard(items) {
     }
 }
 
+var renderMenu = () => {
+    return $.ajax({
+        url: "/api/admin/item",
+        type: "GET"
+    }).then((menu) => {
+        for (var i = 0; i < menu.length; i++) {
+            createNewCard(menu[i]);
+        }
+    })
+}
+
+// Updates current table ID based on selected Table ID
 function updateTable() {
     var tableDropdownId = $("#order-table").find(":selected").val();
-    console.log(tableDropdownId);
+    // console.log(tableDropdownId);
     $.ajax({
         url: "/api/seating/" + tableDropdownId,
         type: "PUT"
@@ -146,6 +128,7 @@ function updateTable() {
     return tableDropdownId;
 }
 
+// Takes itemId and seatingId and adds them to order when "Add" button is clicked
 function addToCart() {
     var currentMenuItemId = this.getAttribute("data-id");
     var tableDropdownId = updateTable();
@@ -158,7 +141,7 @@ function addToCart() {
             itemId: currentMenuItemId,
             seatingId: tableDropdownId
         }
-        console.log(data);
+        // console.log(data);
         $.ajax({
             url: "/api/orders",
             type: "POST",
@@ -167,11 +150,9 @@ function addToCart() {
             if (err) throw err;
         })
     }
-
-
-
 }
 
+// Renders item's in cart for each table based on tableId
 function renderCart() {
     var seatingIdToRender = $("#order-table").find(":selected").val();
     // console.log(seatingIdToRender);
@@ -199,24 +180,19 @@ function renderCart() {
 }
 
 function submitOrder() {
-    // var cartItems = document.querySelectorAll(".cart-item");
     console.log("WE ARE HERE");
-
-    // $.ajax({
-    //     url: "api/"
-    // })
+    var cartItems = document.querySelectorAll(".cart-item");
+    // var dataOrderId = cartItems.getAttribute("data-order-id");
+    cartItems.forEach(element => {
+        console.log(element.dataset.orderId);
+        $.ajax({
+            url: "/api/orders/" + element.dataset.orderId,
+            type: "PUT",
+        }).then(function (data) {
+            console.log(data);
+            
+        })
+    });
+    alert("Your Order Has Been Submitted!");
+    window.location.href = "/";
 }
-
-$(document).ready(function () {
-    // Initialize webpage
-    renderMenu();
-    renderSeating();
-
-    // Event Listeners
-    $(document).on("click", "button.addItem", addToCart);
-    $(document).on("click", "button.viewCart", renderCart);
-    var submitOrderMain = $("form.submitOrderForm");
-    submitOrderMain.on("submit", submitOrder);
-    // $(document).on("submit", "form.submitOrderForm", submitOrder);
-});
-
