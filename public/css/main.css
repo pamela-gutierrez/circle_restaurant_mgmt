@@ -14,7 +14,9 @@ body{
 }
 .menuItem-container{
 	background-color: #f8e7bb;
+	border-color: #f8e7bb;
 }
+
 .callout {
 	
 	text-align: center;
@@ -31,6 +33,7 @@ body{
 h1 {
 	font-family: 'Sigmar One', cursive;
 	text-shadow: black 3px;
+	text-shadow: 3px 3px black;
 }
 
 .tabMenu {
@@ -44,13 +47,25 @@ li > a {
 	font-family: 'Neucha', cursive;
 }
 
-h4 {
+/* h3 {
 	font-weight: bold;
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Amatic SC', cursive;
+} */
+
+.itemN{
+	font-size: 40px;
+	font-weight: bold;
+	font-family: 'Amatic SC', cursive;
 }
+
+.itemD, .itemC, .addItem {
+	font-family: 'Amatic SC', cursive;
+	font-size: 25px;
+}
+
 .cell-header{
 	font-weight: bold;
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Amatic SC', cursive;
 	background-color: #777b84;
 	color: white;
 	border: solid rgb(204, 71, 81) 10px;
@@ -59,6 +74,10 @@ h4 {
 	padding-bottom: 0px;
 }
 
+.tabs-panel, .tabs{
+	background-color: #f8e7bb;
+	border-color: #f8e7bb;
+}
 .card-divider {
 	background-color:#777b84;
 	padding-bottom: 0px;
@@ -66,6 +85,7 @@ h4 {
 
 .card {
 	margin: 5px;
+	border: solid black 2px;
 }
 
 
@@ -83,6 +103,7 @@ th, td, tr {
 	background-color: #c3a840;
 	border: solid black 1px;
 }
+
 /* 
 .submitOrderForm {
 	background-color: #c3a840;

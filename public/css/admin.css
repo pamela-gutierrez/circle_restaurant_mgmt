@@ -1,16 +1,140 @@
-.top-bar {
-	background-color: red;
+body{
+	background-color: #f8e7bb;
+	padding-left: 10px;
+	padding-right: 10px;
+	
 }
 
+.dropdown.menu {
+	background-color: #f8e7bb;
+}
+
+.top-bar, .top-bar-left {
+	background-color: #f8e7bb;
+}
+.menuItem-container{
+	background-color: #f8e7bb;
+	border-color: #f8e7bb;
+}
+
+#addItem-modal {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-family: 'Amatic SC', cursive;
+}
+
+.tabs{
+	background-color: #f8e7bb;
+	border-color: #f8e7bb;
+}
+.tabs-panel{
+	background-color: #f8e7bb;
+	border-color: black;
+}
+.callout {
+	
+	text-align: center;
+	font-family: 'Sigmar One', cursive;
+	margin: 10px; 
+	color: #ea2231;
+	background-color: #f5e124;
+	border: solid black 3px;
+	outline: solid #ea2231 10px;
+}
+
+h1 {
+	font-family: 'Sigmar One', cursive;
+	text-shadow: black 3px;
+	text-shadow: 3px 3px black;
+}
+
+.tabMenu {
+	justify-content: center;
+}
+
+li > a {
+	color: black;
+	font-weight: bold;
+	font-size: 25px;
+	font-family: 'Neucha', cursive;
+}
+
+.itemN{
+	font-size: 40px;
+	font-weight: bold;
+	font-family: 'Amatic SC', cursive;
+}
+
+.itemD, .itemC, .editItem {
+	font-family: 'Amatic SC', cursive;
+	font-size: 25px;
+}
+
+.cell-header{
+	font-weight: bold;
+	font-family: 'Amatic SC', cursive;
+	background-color: #777b84;
+	color: white;
+	border: solid rgb(204, 71, 81) 10px;
+}
 .cell-card {
 	padding-bottom: 0px;
 }
 
 .card-divider {
+	background-color:#777b84;
 	padding-bottom: 0px;
 }
 
 .card {
 	margin: 5px;
+	border: solid black 2px;
 }
+
+
+#modalCart{
+	padding: 5px;
+	background-color: #a47c2d;
+}
+
+h2{
+	font-family: 'Sigmar One', cursive;
+}
+
+th, td, tr {
+	text-align: center;
+	background-color: #c3a840;
+	border: solid black 1px;
+}
+
+input.button {
+	background-color: #4569a4;
+	border: solid black 1px;
+}
+
+button {
+	border: solid black 1px;
+	background-color: #4569a4;
+
+}
+
+.close-button{
+	background-color: transparent;
+	border: transparent;
+	color: black;
+}
+
+.close-button:hover{
+	
+	border-color: transparent;
+}
+
+.totalAmount {
+	color: brown;
+	font-weight: bold;
+}
+
+
+
+
 
