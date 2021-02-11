@@ -21,6 +21,10 @@
 	<meta class="foundation=mq">
 
 	<!-- CSS -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gloria+Hallelujah&family=Luckiest+Guy&family=Neucha&family=Sigmar+One&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 
 	<link rel="icon" type="image/png" href="assets/circle-ico.png">
@@ -47,12 +51,12 @@
 	</div>
 
 	<div class="callout">
-		<h1>Welcome to Bob's Burgers menu.</h1>
+		<h1>Welcome to Bob's Burgers</h1>
 		<p>Home of the Bob's Burger, may I take your order.</p>
 	</div>
 
 	<!-- Tab menu -->
-	<div class="flex-container">
+	<div class="flex-container tabMenu">
 		<ul class="tabs" data-tabs="tabs" role="tablist" data-tabs="2m5cy2-tabs" id="menu-tabs">
 			<li class="tabs-title is-active" role="presentation">
 				<a href="#menuAppetizers" role="tab">Appetizers</a>
@@ -131,7 +135,7 @@
 				<thead>
 					<tr>
 						<th>Item</th>
-						<th>Quantity</th>
+						<th>Qty</th>
 						<th>Price</th>
 					</tr>
 				</thead>
@@ -139,8 +143,9 @@
 				</tbody>
 				<tfoot>
 					<tr class="totalAmount">
-						<td>Total: $</td>
-						<td class="cartTotal"></td>
+						<td></td>
+						<td>Total:</td>
+						<td>$<span class="cartTotal"></span></td>
 					</tr>
 				</tfoot>
 			</table>
