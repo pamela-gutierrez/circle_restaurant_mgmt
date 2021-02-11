@@ -97,7 +97,6 @@ module.exports = function (app) {
 
     // Orders(User):GET, get order cart
     app.get("/api/orders/seating/:id", function (req, res) {
-        // console.log("I HATE YOU");
         db.Orders.findAll({
             where: {
                 SeatingId: req.params.id,
@@ -111,10 +110,9 @@ module.exports = function (app) {
                 }
             ]
         }).then(function (dbItem) {
-            // console.log(dbItem);
             res.json(dbItem);
         })
-    })
+    });
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {
@@ -142,7 +140,6 @@ module.exports = function (app) {
             res.json(dbItem);
         });
     });
-
 
     // Orders(Admin):GET, return all orders
     app.get("/admin/orders", function (req, res) {

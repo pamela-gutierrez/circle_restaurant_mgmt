@@ -1,4 +1,4 @@
-# Circle Restaurant Management  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+# ![Circle](public/assets/circle-ico.png)Circle Restaurant Management [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 ###### This readme has been procedurally generated 
 
 -----------------------
@@ -15,8 +15,8 @@
 
 -----------------------
 ## Description
-The well rounded restaurant management system!
-
+Circle is a full-stack, well rounded restaurant management application. It allows users, such as customers, to add items to their order while also facilitating restaurant administrative functions. On the administrative side this would include additional features such as adding, editing and deleting existing orders.
+![Main Page](public/assets/main.gif)
 -----------------------
 ## Deployed link
 [add heroku link here]
@@ -40,6 +40,59 @@ node server.js
 -----------------------
 ## Code snippets
 
+For our models, we had "Items" which holds all menu information, "Seating" which assigns users to a specific table for the food to be delivered, and "Orders" which is a join table between the two. Through table association Orders belongs to both Seating and Items with foreign-key's for each table allowing Orders to display itemId's correctly based on seatingId when Users are placing their orders.
+
+```javascript
+Orders.associate = function (models) {
+		models.Orders.belongsTo(models.Seating, {
+				foreignKey: {
+						allowNull: false,
+						constraints: false,
+				}
+		});
+		models.Orders.belongsTo(models.Items, {
+				foreignKey: {
+						allowNull: false,
+						constraints: false,
+				}
+		});
+};
+```
+
+<!-- [Add comments here] -->
+
+```javascript
+app.get("/api/orders/seating/:id", function (req, res) {
+		db.Orders.findAll({
+				where: {
+						SeatingId: req.params.id,
+						submitted: 0,
+						completed: 0
+				},
+				include: [
+						{
+								model: db.Items,
+								required: false
+						}
+				]
+		}).then(function (dbItem) {
+				res.json(dbItem);
+		})
+});
+```
+To help align everything and make the menu items responsive, we added the following Foundation CSS. 
+
+- 'grid-x': align all items in a row
+- 'grid-margin-x': add a space along the x-axis
+- 'small-up-2/medium-up-2/large-up-2": limit the number of menu items visible at various breakpoints.
+
+```html
+<div class="tabs-panel is-active" data-menu-items="appetizers" id="menuAppetizers">
+	<div class="grid-x grid-margin-x small-up-2 medium-up-4 large-up-6" id="appetizerItem"></div>
+	<!-- Dynamically add Menu Items by category through jQuery-->
+</div>
+```
+
 -----------------------
 ## Licenses
 This project uses a [MIT License](https://opensource.org/licenses/MIT). 
@@ -58,18 +111,15 @@ NA
 -----------------------
 ## Questions
 Created by Hudson Barnes, Pamela Gutierrez, Michael Medina, Muhammad A Khalid
+![Family](public/assets/family.jpg)
+###### Pictured: Hudson Barnes, Pamela Gutierrez, Michael Medina, Muhammad A Khalid
+<br>
 
 If you have any questions you can reach us at the following: 
 
-Hudson Barnes <br>
-[hudsonmbarnes@gmail.com](mailto:hudsonmbarnes@gmail.com) <br>
-[LinkedIn](https://www.linkedin.com/in/hudson-barnes-398483151/) | [GitHub](https://github.com/hudsonmbarnes)
-
-Pamela Gutierrez <br>[gtrz.pamela@gmail.com](mailto:gtrz.pamela@gmail.com)<br>
-[LinkedIn](http://www.linkedin.com/in/pamela-gutierrez) | [GitHub](https://github.com/pamela-gutierrez)
-
-Michael Medina <br>[michaelanthony.medinaa@gmail.com](mailto:michaelanthony.medinaa@gmail.com)<br>
-[LinkedIn](https://www.linkedin.com/in/michaelanthonyy/) | [GitHub](https://github.com/michaelanthonyyy)
-
-Muhammad A Khalid <br>[akhalid.code@gmail.com](mailto:akhalid.code@gmail.com)<br>
-[LinkedIn](https://www.linkedin.com/in/abdullahkhalid/) | [GitHub](https://github.com/akhalid88/)
+| | | | |
+|-|-|-|-|
+| Hudson Barnes  | [hudsonmbarnes@gmail.com](mailto:hudsonmbarnes@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/hudson-barnes-398483151/) | [GitHub](https://github.com/hudsonmbarnes)  |
+| Pamela Gutierrez  | [gtrz.pamela@gmail.com](mailto:gtrz.pamela@gmail.com)  |[LinkedIn](http://www.linkedin.com/in/pamela-gutierrez) | [GitHub](https://github.com/pamela-gutierrez)  |
+| Michael Medina  | [michaelanthony.medinaa@gmail.com](mailto:michaelanthony.medinaa@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/michaelanthonyy/) | [GitHub](https://github.com/michaelanthonyyy)  |
+| Muhammad A Khalid  | [akhalid.code@gmail.com](mailto:akhalid.code@gmail.com)  |[LinkedIn](https://www.linkedin.com/in/abdullahkhalid/) | [GitHub](https://github.com/akhalid88/)  |
