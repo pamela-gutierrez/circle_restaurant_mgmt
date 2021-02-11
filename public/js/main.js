@@ -78,13 +78,16 @@ function createNewCard(items) {
     var newOrderCardHeading = $("<div>").addClass("header cell-header card-section");
     var itemName = $("<h4>").text(items.name + " ");
     var itemDescription = $("<p>").text(items.description + " ");
-    var newFooter = $("<div>").addClass("card-divider flex-container footer");
-    var itemCost = $("<p>").addClass("align-left").text("$" + items.cost);
-    var addButton = $("<button>").addClass("button addItem align-right").attr("data-id", items.id).text("Add Item");
+    var newFooter = $("<div>").addClass("card-divider flex-container footer align-right");
+    var itemCost = $("<p>").text("$" + items.cost + " ");
+    var addButton = $("<button>").addClass("button addItem").attr("data-id", items.id).text("Add Item");
+    
     itemCost.append(addButton);
-    newFooter.append(itemCost)
+    newFooter.append(itemCost); //.append(addButton);
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
+
+
     switch (items.category) {
         case "Appetizers":
             $("#appetizerItem").append(newOrderCard);
