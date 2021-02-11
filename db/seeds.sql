@@ -1,15 +1,14 @@
 ---- Admin Login ----
-INSERT INTO User (username, password, createdAt, updatedAt) 
+INSERT INTO Users (username, password, createdAt, updatedAt) 
 VALUES ("admin", "$2a$10$9AxtZPBRk7z4PPumlx69nO70ggGIitssk2G7l0vEYp5e2YOj05neK", CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
 
 ---- Seating (UserTables) ----
 INSERT INTO seatings (maxSeats, createdAt, updatedAt) VALUES (4, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0)), (3, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0)), (5, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0)), (4, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0)), (2, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
 
+---- Items (Appetizer Items) ----
+INSERT INTO items (name, category, description, cost, createdAt, updatedAt) VALUES ("Use It Or Bleus It Fries", "Appetizers", "Come with bleu cheese", 6.00, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
 
----- Items (Sandwich Items) ----
-INSERT INTO items (name, category, description, cost, createdAt, updatedAt) VALUES ("BLT", "Sandwiches", "Bacon, Lettuce, and Tomato", 14.50, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
-
-INSERT INTO items (name, category, description, cost, createdAt, updatedAt) VALUES ("Turkey Club", "Sandwiches", "Turkey, Lettuce, and Bacon", 15.00, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
+INSERT INTO items (name, category, description, cost, createdAt, updatedAt) VALUES ("Onion Ring Tower", "Appetizers", "Stacks on stacks on stacks", 7.00, CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0));
 
 
 ---- Items (Burger Items) ----
@@ -40,17 +39,6 @@ INSERT INTO items (name, category, description, cost, createdAt, updatedAt) VALU
 
 
 
--- INSERT INTO Items (name, category, description, cost)
--- VALUES ("Chicken Noodle", "Soups", "Chicken and noodles in broth", 7.00);
-
--- INSERT INTO Items (name, category, description, cost)
--- VALUES ("Broccoli Cheddar", "Soups", "Broccoli and cheddar in a creamy soup", 8.00);
-
--- INSERT INTO Items (name, category, description, cost)
--- VALUES ("Asiago Bagel", "Bagels", "Plain bagel covered in melted asiago cheese", 6.00);
-
--- INSERT INTO Items (name, category, description, cost)
--- VALUES ("Everything Bagel", "Bagels", "Topped with sesame seeds, poppyseeds, garlic, toasted onion and kosher salt", 6.00);
 
 
 
