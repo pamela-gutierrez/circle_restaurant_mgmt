@@ -20,7 +20,7 @@ module.exports = function (app) {
 
     // Item(Admin):GET, return all menu items
     app.get("/api/admin/item", function (req, res) {
-        console.log("YOU ARE GETTING ALL ITEMS")
+        // console.log("YOU ARE GETTING ALL ITEMS")
         db.Items.findAll({}).then(function (dbItems) {
             res.json(dbItems);
         });
@@ -97,10 +97,12 @@ module.exports = function (app) {
 
     // Orders(User):GET, get order cart
     app.get("/api/orders/seating/:id", function (req, res) {
-        console.log("I HATE YOU");
+        // console.log("I HATE YOU");
         db.Orders.findAll({
             where: {
-                SeatingId: req.params.id
+                SeatingId: req.params.id,
+                submitted: 0,
+                completed: 0
             },
             include: [
                 {
@@ -109,14 +111,14 @@ module.exports = function (app) {
                 }
             ]
         }).then(function (dbItem) {
-            console.log(dbItem);
+            // console.log(dbItem);
             res.json(dbItem);
         })
     })
 
     // Orders(User):POST, post item to order
     app.post("/api/orders", function (req, res) {
-        console.log(req.body.itemId);
+        // console.log(req.body.itemId);
         db.Orders.create({
             SeatingId: req.body.seatingId,
             ItemId: req.body.itemId,
@@ -194,6 +196,18 @@ module.exports = function (app) {
             }
         }).then(function (dbItem) {
             res.json(dbItem)
+        });
+    });
+
+    app.put("/api/orders/:id", function (req, res) {
+        db.Orders.update({
+            submitted: 1
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbItem) {
+            res.json(dbItem);
         });
     });
 

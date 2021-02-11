@@ -24,8 +24,8 @@ function createNewCard(items) {
     newOrderCardHeading.append(itemName).append(itemDescription).append(newFooter);
     newOrderCard.append(newOrderCardHeading);
     switch (items.category) {
-        case "Sandwiches":
-            $("#adminSandwichItem").append(newOrderCard);
+        case "Appetizers":
+            $("#adminAppetizerItem").append(newOrderCard);
             break;
         case "Burgers":
             $("#adminBurgerItem").append(newOrderCard);
