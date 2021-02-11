@@ -37,6 +37,11 @@ To run this tool use the following command.
 ```
 node server.js
 ```
+
+admin credentials: 
+username: admin
+password: password
+
 -----------------------
 ## Code snippets
 
