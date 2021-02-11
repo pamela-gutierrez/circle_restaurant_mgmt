@@ -130,33 +130,19 @@ module.exports = function (app) {
         });
     });
 
-    // Orders(User):PUT, update item in order
+    // Orders (User) Submit Button in Cart changes submitted to true
     app.put("/api/orders/:id", function (req, res) {
-        db.Items.update({
-            seating_id: req.body.seating_id,
-            item_id: req.body.item_id,
-            item_quantity: req.body.item_quantity,
-            complete: req.body.complete,
-            submitted: req.body.submitted
+        db.Orders.update({
+            submitted: 1
         }, {
             where: {
                 id: req.params.id
             }
         }).then(function (dbItem) {
-            res.json(dbItem)
+            res.json(dbItem);
         });
     });
 
-    // Orders(User):DELETE, delete item in order
-    app.delete("/api/orders/:id", function (req, res) {
-        db.Items.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbItem) {
-            res.json(dbItem)
-        });
-    });
 
     // Orders(Admin):GET, return all orders
     app.get("/admin/orders", function (req, res) {
@@ -196,18 +182,6 @@ module.exports = function (app) {
             }
         }).then(function (dbItem) {
             res.json(dbItem)
-        });
-    });
-
-    app.put("/api/orders/:id", function (req, res) {
-        db.Orders.update({
-            submitted: 1
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbItem) {
-            res.json(dbItem);
         });
     });
 
