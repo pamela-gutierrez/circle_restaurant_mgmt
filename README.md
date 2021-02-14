@@ -15,11 +15,13 @@
 
 -----------------------
 ## Description
+
 Circle is a full-stack, well rounded restaurant management application. It allows users, such as customers, to add items to their order while also facilitating restaurant administrative functions. On the administrative side this would include additional features such as adding, editing and deleting existing orders.
+
 ![Main Page](public/assets/main.gif)
 -----------------------
 ## Deployed link
-[add heroku link here]
+https://circle-restaurant-mgmt-00.herokuapp.com/
 
 -----------------------
 ## Installation
@@ -49,6 +51,7 @@ password: password
 ## Code snippets
 
 For our models, we had "Items" which holds all menu information, "Seating" which assigns users to a specific table for the food to be delivered, and "Orders" which is a join table between the two. Through table association Orders belongs to both Seating and Items with foreign-key's for each table allowing Orders to display itemId's correctly based on seatingId when Users are placing their orders.
+
 
 ```javascript
 Orders.associate = function (models) {
